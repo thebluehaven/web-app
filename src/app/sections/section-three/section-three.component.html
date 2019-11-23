@@ -7,9 +7,10 @@
                         <div class="carousel-item carousel-item-list col col-lg-3 col-md-3 col-sm-3 p-3 building-col" 
                             *ngFor="let building of buildings; let i = index" [class.active]="i==0" (mouseenter)="building.hover=true"  (mouseleave)="building.hover=false">
                             <div class="w-100 building-div">
+                                <div class="available">{{building.available ? 'Availablity: ' + building.available : 'Opening soon'}}</div>
                                 <div class="row">
                                     <div class="col text-center">
-                                        <img src="../../../assets/images/building1.jpg" class="building-image" />
+                                        <img [src]="building.photos_link" [class.transform]="building.name=='IOLITE' || building.name=='JASPER'" class="building-image" />
                                     </div>
                                 </div>
 
@@ -21,9 +22,7 @@
                                 <mat-divider></mat-divider>
                                 <div class="row">
                                     <div class="col text-center p-4">
-                                        <p style="font-size:15px;margin:0;justify-content: center;">Spacious and
-                                            economical 1BHK. In the prime location at Kodathi village road. 1.5KM to
-                                            Wipro Kodathi. 24 hours water available. Ideal for Nuclear families </p>
+                                        <p style="font-size:15px;margin:0;justify-content: center;">{{building.description}} </p>
                                     </div>
                                 </div>
                                 <mat-divider></mat-divider>
@@ -35,7 +34,7 @@
                                 <mat-divider></mat-divider>
                                 <div class="row">
                                     <div class="col text-center p-2">
-                                        <b>{{ building.flats }}</b>
+                                        <b>{{ building.room_type }}</b>
                                     </div>
                                 </div>
                                 <mat-divider></mat-divider>

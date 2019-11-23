@@ -11,8 +11,8 @@
     top: 0;
     border-width: 0 0 1px;
     position: fixed;
-    width: 100%;
-    z-index: 2;
+    width: 101%;
+    z-index: 3;
 }
 
 .header-logo{

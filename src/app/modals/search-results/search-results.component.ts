@@ -1,15 +1,8 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupModalComponent } from '../popup-modal/popup-modal.component';
-
-export interface Building {
-    name: string;
-    flats: string;
-    price: string;
-    location: string;
-    deposit: string;
-    video: string;
-}
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
     selector: 'app-search-results',
@@ -17,93 +10,24 @@ export interface Building {
     styleUrls: ['./search-results.component.css']
 })
 
-export class SearchResultsComponent {
+export class SearchResultsComponent implements OnInit {
     @Input()
     public data: any;
+    firstFormGroup: FormGroup;
+    secondFormGroup: FormGroup;
+    constructor(private formBuilder: FormBuilder) {}
 
-    buildings: Building[] = [
-        {
-            name: 'BH-HLK-AMBER',
-            flats: '1 BHK | 2 BHK | 1 RK',
-            price: '8500',
-            location: 'Halanayakanahalli, Sarjapur Rd.',
-            deposit: '40k',
-            video: 'https://www.youtube.com/embed/eKBDBCnxadQ'
-        },
-        {
-            name: 'BH-HLK-AMBER',
-            flats: '1 BHK | 2 BHK | 1 RK',
-            price: '8500',
-            location: 'Halanayakanahalli, Sarjapur Rd.',
-            deposit: '40k',
-            video: ''
-        },
-        {
-            name: 'BH-HLK-AMBER',
-            flats: '1 BHK | 2 BHK | 1 RK',
-            price: '8500',
-            location: 'Halanayakanahalli, Sarjapur Rd.',
-            deposit: '40k',
-            video: ''
-        },
-        {
-            name: 'BH-HLK-AMBER',
-            flats: '1 BHK | 2 BHK | 1 RK',
-            price: '8500',
-            location: 'Halanayakanahalli, Sarjapur Rd.',
-            deposit: '40k',
-            video: ''
-        },
-        {
-            name: 'BH-HLK-AMBER',
-            flats: '1 BHK | 2 BHK | 1 RK',
-            price: '8500',
-            location: 'Halanayakanahalli, Sarjapur Rd.',
-            deposit: '40k',
-            video: ''
-        },
-        {
-            name: 'BH-HLK-AMBER',
-            flats: '1 BHK | 2 BHK | 1 RK',
-            price: '8500',
-            location: 'Halanayakanahalli, Sarjapur Rd.',
-            deposit: '40k',
-            video: ''
-        }
-    ];
-
-
-    constructor(public dialog: MatDialog) { }
-
-    openVideoDialog(link: string): void {
-        const dialogRef = this.dialog.open(PopupModalComponent, {
-            width: '1100px',
-            data: { video: link, type: 'video' }
-        });
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-        });
+    ngOnInit() {
+      this.firstFormGroup = this.formBuilder.group({
+      });
+      this.secondFormGroup = this.formBuilder.group({
+        secondCtrl: ['', Validators.required]
+      });
+      console.log(this.data)
     }
 
-    openGalleryDialog(): void {
-        const dialogRef = this.dialog.open(PopupModalComponent, {
-            width: '1000px',
-            height: '90vh',
-            data: { type: 'gallery' }
-        });
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-        });
-    }
-
-    openLocationDialog(): void {
-        const dialogRef = this.dialog.open(PopupModalComponent, {
-            width: '1000px',
-            height: '90vh',
-            data: { type: 'location' }
-        });
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-        });
+    goForward($event: string, stepper: MatStepper) {
+        stepper.next();
+        console.log($event);
     }
 }

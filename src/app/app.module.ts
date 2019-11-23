@@ -19,6 +19,7 @@ import { GalleryModalComponent } from './modals/gallery-modal/gallery-modal.comp
 import { LocationModalComponent } from './modals/location-modal/location-modal.component';
 import { VideoModalComponent } from './modals/video-modal/video-modal.component';
 import { PopupModalComponent } from './modals/popup-modal/popup-modal.component';
+import { SearchResultsListComponent } from './modals/search-results/search-results-list/search-results-list.component'
 
 // angular material
 import { MatSelectModule } from '@angular/material/select';
@@ -26,12 +27,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatStepperModule } from '@angular/material/stepper';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+import { HttpClientModule }    from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,7 +52,8 @@ import { MatDividerModule } from '@angular/material/divider';
     GalleryModalComponent,
     LocationModalComponent,
     VideoModalComponent,
-    PopupModalComponent
+    PopupModalComponent,
+    SearchResultsListComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +68,11 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatListModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatSelectModule,
@@ -73,7 +83,11 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatListModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

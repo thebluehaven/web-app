@@ -4,15 +4,12 @@
 }
 
 .review-div{
-    height: 300px;
     width: 100%;
     margin: 0;
     cursor: pointer;
 }
 
 .review-person{
-    height: 280px;
-    width:240px;
     border-radius: 10px;
 }
 
@@ -41,4 +38,143 @@
 .carousel-control-prev:hover,.carousel-control-next:hover{
     background-color: lightgray;
     opacity:0.3;
+}
+
+.review-prof, .review-comp {
+    margin:0;
+    font-family:'Bree Serif', serif;
+}
+
+
+/* media query for mob */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .review-person{
+        height: 180px;
+        width:140px;
+    }
+
+    .review-div{
+        height: 500px;
+        display: block;
+    }
+
+    .quote_reverted-col{
+        display: none;
+    }
+
+    .review-main-div{
+        text-align: center;
+        margin-top:10px
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .review-person{
+        height: 180px;
+        width:140px;
+    }
+
+    .review-div{
+        height: 500px;
+        display: block;
+    }
+
+    .quote_reverted-col{
+        display: none;
+    }
+
+    .review-main-div{
+        text-align: center;
+        margin-top:10px
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .review-person{
+        height: 240px;
+        width:200px;
+    }
+
+    .review-div{
+        height: 500px;
+        display: block;
+    }
+
+    .quote_reverted-col{
+        display: none;
+    }
+
+    .review-main-div{
+        text-align: center;
+        margin-top:10px
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .review-person{
+        height: 280px;
+        width:240px;
+    }
+
+    .review-div{
+        height: 300px;
+        display: flex;
+    }
+
+    .quote_reverted-col{
+        display: flex;
+    }
+
+    .review-main-div{
+        text-align: left;
+        margin:auto
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .review-person{
+        height: 280px;
+        width:240px;
+    }
+
+    .review-div{
+        height: 300px;
+        display: flex;
+    }
+
+    .quote_reverted-col{
+        display: flex;
+    }
+
+    .review-main-div{
+        text-align: left;
+        margin:auto
+    }
+}
+
+@media (min-width: 1370px) { 
+    .review-person{
+        height: 280px;
+        width:240px;
+    }
+
+    .review-div{
+        height: 300px;
+        display: flex;
+    }
+
+    .quote_reverted-col{
+        display: flex;
+    }
+
+    .review-main-div{
+        text-align: left;
+        margin:auto
+    }
 }

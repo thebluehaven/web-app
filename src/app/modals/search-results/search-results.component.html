@@ -2,7 +2,7 @@
     <div class="col col-lg-9 col-md-9 col-sm-9 flex-column">
         <p class="mr-3">Your Selection :</p>
         <mat-chip-list aria-label="Selections">
-            <mat-chip *ngIf="data.type.value">{{data.type.viewValue}} <mat-icon matChipRemove>cancel</mat-icon>
+            <mat-chip *ngIf="data.aType.value">{{data.aType.viewValue}} <mat-icon matChipRemove>cancel</mat-icon>
             </mat-chip>
             <mat-chip *ngIf="data.lookingForOption.value">{{data.lookingForOption.viewValue}}<mat-icon matChipRemove>
                     cancel
@@ -15,57 +15,34 @@
         </mat-chip-list>
     </div>
 </div>
-<div class="row buildings-list-container mt-3">
-    <div class="col col-lg-12 col-md-12 col-sm-12 p-0">
-        <ul class="buildings-ul">
-            <li *ngFor="let building of buildings" class="mt-2 p-2" style="border-bottom: 1px solid gray;">
-                <div class="row buidling-row">
-                    <div class="col col-lg-3 col-md-3 col-sm-3">
-                        <img src="../../../assets/images/building1.jpg" class="building-image" />
-                    </div>
-                    <div class="col col-lg-9 col-md-9 col-sm-9 p-0">
-                        <div class="row">
-                            <div class="col col-lg-12 col-md-12 col-sm-12 padding-3"><b>{{ building.name }}</b></div>
-                        </div>
-                        <div class="row">
-                            <div class="col col-lg-12 col-md-12 col-sm-12 p-0"><img
-                                    src="https://img.icons8.com/android/24/000000/marker.png" class="pin-image">
-                                <p style="font-size:14px;color:gray">{{ building.location }}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col col-lg-12 col-md-12 col-sm-12 padding-3">
-                                Flats available: <b>{{ building.flats }}</b>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col col-lg-12 col-md-12 col-sm-12 padding-3">
-                                Price starts from: <img
-                                src="../../../assets/images/rupee.png" class="rupee-image"><b>{{ building.price }}</b>
-                            </div>
-                        </div>
 
-                        <div class="row mt-3 view-row">
-                            <div class="col col-lg-2 col-md-2 col-sm-2 p-0 text-center">
-                                <a (click)="openGalleryDialog()" class="building-links">View gallery</a>
-                            </div>
+<mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Select</ng-template>
+            <app-search-results-list (goForward)="goForward($event, stepper)"></app-search-results-list>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Customize</ng-template>
+            <mat-form-field>
+                <input matInput placeholder="Address" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Move-in</ng-template>
+        You are now done.
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>
 
-                            <div class="col col-lg-4 col-md-4 col-sm-4 p-0 text-center">
-                                <a (click)="openLocationDialog()" class="building-links">View location on map</a>
-                            </div>
 
-                            <div class="col col-lg-3 col-md-3 col-sm-3 p-0 text-center">
-                                <a (click)="openVideoDialog(building.video)" class="building-links">View video</a>
-                            </div>
-
-                            <div class="col col-lg-3 col-md-3 col-sm-3 p-0">
-                                <button class="submit-button" color="primary" mat-raised-button>Select building</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </li>
-        </ul>
-    </div>
-</div>

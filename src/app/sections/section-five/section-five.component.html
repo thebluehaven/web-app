@@ -1,34 +1,37 @@
-<div class="row section-five justify-content-center align-items-center" id="section-five">
+<div class="row section-five justify-content-center align-items-center pt-5" id="section-five">
     <div class="col col-lg-10 col-md-10 col-sm-10">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" *ngFor="let testimonial of testimonials; let i=index"
+                    [class.active]="i==0" data-slide-to="i"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="carousel-item" *ngFor="let testimonial of testimonials; let i=index" [class.active]="i==0">
                     <div class="row review-div">
+                        <div class="col col-lg-4 col-md-4 col-sm-4 text-center">
+                            <img [src]="testimonial.photo_link" class="review-person" />
+                        </div>
                         <div class="col col-lg-8 col-md-8 col-sm-8">
                             <div class="row justify-content-center align-self-center" style="height: 100%;">
-                                <div class="col col-lg-1 col-md-1 col-sm-1 m-auto" style="height:40%">
+                                <div class="col col-lg-1 col-md-1 col-sm-1 m-auto quote_reverted-col" style="height:40%">
                                     <i class="material-icons quote_reverted">format_quote</i>
                                 </div>
-                                <div class="col col-lg-11 col-md-11 col-sm-11 m-auto">
-                                    <p class="review-text"> Inset dividers can also be added to provide the appearance
-                                        of distinct elements in a list
-                                        without
-                                        cluttering content like avatar images or icons. Make sure to avoid adding an
-                                        inset divider.</p>
+                                <div class="col col-lg-11 col-md-11 col-sm-11 review-main-div">
+                                    <p style="margin: 0;display: inline;color:brown" class="review-text">
+                                        {{testimonial.name}},</p>
+                                    <p style="margin: 0;display: inline;font-style: italic;" class="review-prof">
+                                        residing at </p>
+                                    <p style="margin: 0;display: inline;color:chocolate" class="review-text">
+                                        {{testimonial.building_name}},</p>
+                                    <p class="review-text">{{testimonial.testimonial}}</p>
+                                    <p class="review-prof">{{testimonial.profession}}</p>
+                                    <p class="review-comp">{{testimonial.company}}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col col-lg-4 col-md-4 col-sm-4 text-center">
-                            <img src="../../../assets/images/person.jpg" class="review-person" />
-                        </div>
                     </div>
                 </div>
-                <div class="carousel-item">
+                <!-- <div class="carousel-item">
                     <div class="row review-div">
                         <div class="col col-lg-4 col-md-4 col-sm-4 text-center">
                             <img src="../../../assets/images/person.jpg" class="review-person" />
@@ -69,7 +72,7 @@
                             <img src="../../../assets/images/person.jpg" class="review-person" />
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

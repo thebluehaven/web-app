@@ -1,16 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { BuildingObject } from 'src/app/CONSTANTS';
+import { ServicesService } from 'src/app/services.service';
 // import * as $ from 'jquery';
 declare var $: any;
-
-export interface Building {
-    name: string;
-    flats: string;
-    price: string;
-    location: string;
-    deposit: string;
-    video: string;
-    hover: boolean;
-}
 
 @Component({
     selector: 'app-section-three',
@@ -18,73 +10,19 @@ export interface Building {
     styleUrls: ['./section-three.component.css']
 })
 export class SectionThreeComponent implements OnInit {
-    buildings: Building[] = [
-        {
-            name: 'BH-HLK-AMBER',
-            flats: '1 BHK | 2 BHK | 1 RK',
-            price: '8500',
-            location: 'Halanayakanahalli, Sarjapur Rd.',
-            deposit: '40k',
-            video: 'https://www.youtube.com/embed/eKBDBCnxadQ',
-            hover: false
-        },
-        {
-            name: 'BH-HLK-AMBER',
-            flats: '1 BHK | 2 BHK | 1 RK',
-            price: '8500',
-            location: 'Halanayakanahalli, Sarjapur Rd.',
-            deposit: '40k',
-            video: '',
-            hover: false
-        },
-        {
-            name: 'BH-HLK-AMBER',
-            flats: '1 BHK | 2 BHK | 1 RK',
-            price: '8500',
-            location: 'Halanayakanahalli, Sarjapur Rd.',
-            deposit: '40k',
-            video: '',
-            hover: false
-        },
-        {
-            name: 'BH-HLK-AMBER',
-            flats: '1 BHK | 2 BHK | 1 RK',
-            price: '8500',
-            location: 'Halanayakanahalli, Sarjapur Rd.',
-            deposit: '40k',
-            video: '',
-            hover: false
-        },
-        {
-            name: 'BH-HLK-AMBER',
-            flats: '1 BHK | 2 BHK | 1 RK',
-            price: '8500',
-            location: 'Halanayakanahalli, Sarjapur Rd.',
-            deposit: '40k',
-            video: '',
-            hover: false
-        },
-        {
-            name: 'BH-HLK-AMBER',
-            flats: '1 BHK | 2 BHK | 1 RK',
-            price: '8500',
-            location: 'Halanayakanahalli, Sarjapur Rd.',
-            deposit: '40k',
-            video: '',
-            hover: false
-        }
-    ];
+    buildings: BuildingObject[];
 
-    constructor() {
+    constructor(private appService: ServicesService) {
     }
 
     ngOnInit() {
+        this.getBuildings();
         $('#myCarousel').carousel({
             interval: 1000
         });
 
         // tslint:disable-next-line: only-arrow-functions
-        $('#carousel-example').on('slide.bs.carousel', function(e) {
+        $('#carousel-example').on('slide.bs.carousel', function (e) {
             const $e = $(e.relatedTarget);
             const idx = $e.index();
             const itemsPerSlide = 4;
@@ -102,5 +40,31 @@ export class SectionThreeComponent implements OnInit {
                 }
             }
         });
+    }
+
+    getBuildings(): void {
+        
+        this.appService.getBuildings()
+            .subscribe(buildings => this.buildings = buildings.map(x => {
+                const bPrice = []; const bDeposit = [];
+                let availableCount = 0;
+                x.room_type.forEach(element => {
+                    availableCount += element.available;
+                    bPrice.push(element.price);
+                    bDeposit.push(element.deposit);
+                });
+                return {
+                    name: x.name,
+                    room_type: x.room_type.map((y: { name: string; }) => y.name).join(' | '),
+                    price : Math.min(...bPrice),
+                    location: x.location,
+                    deposit : Math.min(...bDeposit),
+                    video_link: x.video_link,
+                    photos_link: x.photos_link,
+                    short_name: x.short_name,
+                    description: x.description,
+                    available: x.available ? availableCount : false
+                };
+            }));
     }
 }

@@ -25,7 +25,7 @@ export interface Budget {
 @Component({
     selector: 'app-section-two',
     templateUrl: './section-two.component.html',
-    styleUrls: ['./section-two.component.css']
+    styleUrls: ['./section-two.component.scss']
 })
 
 export class SectionTwoComponent {
@@ -56,7 +56,7 @@ export class SectionTwoComponent {
     ];
 
     selected = {
-        type : {},
+        aType : {},
         lookingForOption: {},
         location: {},
         budget: {}
@@ -65,16 +65,14 @@ export class SectionTwoComponent {
     constructor(public dialog: MatDialog) { }
 
     submitRequest() {
-        // console.log(this.selected);
-        // tslint:disable-next-line: no-string-literal
         // tslint:disable-next-line: max-line-length
-        if (!this.selected.budget['value'] && !this.selected.location['value'] && !this.selected.lookingForOption['value'] && !this.selected.type['value']){ }
+        if (!this.selected.budget['value'] && !this.selected.location['value'] && !this.selected.lookingForOption['value'] && !this.selected.aType['value']){ }
         else {this.openDialog(); }
     }
 
     openDialog(): void {
         const dialogRef = this.dialog.open(PopupModalComponent, {
-          width: '850px',
+          width: '900px',
           height: '90vh',
           data: {...this.selected, type: 'search'}
         });
@@ -86,7 +84,7 @@ export class SectionTwoComponent {
 
       reset() {
           this.selected = {
-            type : {},
+            aType : {},
             lookingForOption: {},
             location: {},
             budget: {}
