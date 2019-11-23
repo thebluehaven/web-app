@@ -1,0 +1,47 @@
+.section-six {
+    height: 400px;
+}
+
+.contacts{
+    border-left: 1px solid lightgray;
+    height: 340px;
+}
+
+.story-header{
+    margin: 0;
+    font-family:'Bree Serif', serif;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+.story-content{
+    margin: 0;
+    font-family:'Bree Serif', serif;
+    font-size: 20px;
+    text-align: justify;
+    color:rgb(158, 85, 85)
+}
+
+.footer{
+    border-top: 1px solid lightgray;
+    height: 50px;
+}
+
+.copyright{
+    font-size: 14px;
+    margin: 0
+}
+
+.reach{
+    margin: 1rem 0;
+    font-family:'Bree Serif', serif;
+    font-size: 20px;
+}
+
+.mail, .call{
+    display: inline;
+}
+
+p.mail, p.call {
+    vertical-align: super;
+}

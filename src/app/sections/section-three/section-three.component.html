@@ -1,0 +1,76 @@
+<div class="row section-three justify-content-center align-items-center" id="section-three">
+    <div class="col col-lg-10 col-md-10 col-sm-10 p-0">
+        <div class="top-content">
+            <div class="container-fluid p-0">
+                <div id="carousel-example" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner carousel-inner-list row no-gutters w-100 mx-auto" role="listbox" style="height: 800px">
+                        <div class="carousel-item carousel-item-list col col-lg-3 col-md-3 col-sm-3 p-3 building-col" 
+                            *ngFor="let building of buildings; let i = index" [class.active]="i==0" (mouseenter)="building.hover=true"  (mouseleave)="building.hover=false">
+                            <div class="w-100 building-div">
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <img src="../../../assets/images/building1.jpg" class="building-image" />
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col text-center p-2 pt-3">
+                                        <h5><b>{{ building.name }}</b></h5>
+                                    </div>
+                                </div>
+                                <mat-divider></mat-divider>
+                                <div class="row">
+                                    <div class="col text-center p-4">
+                                        <p style="font-size:15px;margin:0;justify-content: center;">Spacious and
+                                            economical 1BHK. In the prime location at Kodathi village road. 1.5KM to
+                                            Wipro Kodathi. 24 hours water available. Ideal for Nuclear families </p>
+                                    </div>
+                                </div>
+                                <mat-divider></mat-divider>
+                                <div class="row">
+                                    <div class="col text-center p-2">
+                                        <p style="font-size:14px;color:gray;margin:0">{{ building.location }}</p>
+                                    </div>
+                                </div>
+                                <mat-divider></mat-divider>
+                                <div class="row">
+                                    <div class="col text-center p-2">
+                                        <b>{{ building.flats }}</b>
+                                    </div>
+                                </div>
+                                <mat-divider></mat-divider>
+                                <div class="row">
+                                    <div class="col text-center p-2">
+                                        Price starts from: <img src="../../../assets/images/rupee.png"
+                                            class="rupee-image"><b>{{ building.price }}</b>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col text-center p-2">
+                                        <button [hidden]="!building.hover" class="submit-button" color="primary" mat-raised-button>Read
+                                            more</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+<div class="row no-gutters justify-content-around">
+    <div class="col col-lg-3 col-md-3 col-sm-3 px-3  building-col"></div>
+    <div class="col col-lg-3 col-md-3 col-sm-3 px-3  building-col"></div>
+    <div class="col col-lg-3 col-md-3 col-sm-3 px-3  building-col"></div>
+</div> -->

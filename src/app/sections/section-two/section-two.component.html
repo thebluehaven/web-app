@@ -1,0 +1,52 @@
+<div class="row no-gutters justify-content-center align-items-center section-two" id="section-two">
+    <div class="col col-lg-8 col-md-8 col-sm-8 section-two-col p-0">
+        <div class="row">
+            <div class="col col-lg-3 col-md-3 col-sm-3 text-center">
+                <mat-form-field>
+                    <mat-label>Accomodation type</mat-label>
+                    <mat-select [(value)]="selected.type">
+                        <mat-option *ngFor="let type of types" [value]="type">
+                            {{type.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col col-lg-3 col-md-3 col-sm-3 text-center">
+                <mat-form-field>
+                    <mat-label>Preferred location</mat-label>
+                    <mat-select [(value)]="selected.location">
+                        <mat-option *ngFor="let location of locations" [value]="location">
+                            {{location.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col col-lg-3 col-md-3 col-sm-3 text-center">
+                <mat-form-field>
+                    <mat-label>Looking for?</mat-label>
+                    <mat-select [(value)]="selected.lookingForOption">
+                        <mat-option *ngFor="let option of lookingForOptions" [value]="option">
+                            {{option.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col col-lg-3 col-md-3 col-sm-3 text-center">
+                <mat-form-field>
+                    <mat-label>Your budget</mat-label>
+                    <mat-select [(value)]="selected.budget">
+                        <mat-option *ngFor="let budget of budgets" [value]="budget">
+                            {{budget.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row button-row">
+            <div class="col col-lg-12 col-md-12 col-sm-12 text-center">
+                    <button class="reset-button mr-4" mat-raised-button (click)="reset()">Reset</button>
+                    <button class="submit-button" color="primary" mat-raised-button (click)="submitRequest()">Search home</button>
+            </div>
+        </div>
+    </div>
+</div>

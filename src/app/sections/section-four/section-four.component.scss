@@ -1,0 +1,133 @@
+.section-four {
+    height: 600px;
+    background: linear-gradient(to right, #cc95c0, #dbd4b4, #7aa1d2);;
+}
+
+.about-text{
+    margin: 0;
+    font-family:'Bree Serif', serif;
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 18px;
+}
+
+.about-us-icons{
+    font-size: 90px;
+}
+
+.about-us-options-heading{
+    margin: 0;
+    font-family:'Bree Serif', serif;
+    font-weight: bolder;
+    font-size: 26px;
+}
+
+.about-us-options-text{
+    margin: 10px 0 0 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    justify-content: center;
+}
+
+.about-us-box:hover{
+    .about-us-icons{
+        transform: rotate(-90deg);
+        transition: all 500ms ease-in;
+    }
+    box-shadow: 0 15px 10px #777;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+/* media query for mob */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .about-us-options-div{
+        display: block;
+    }
+
+    .section-four {
+        height: 1300px;
+    }
+
+    .about-us-options-col{
+        padding:0 3rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .about-us-options-div{
+        display: block;
+    }
+
+    .section-four {
+        height: 1300px;
+    }
+
+    .about-us-options-col{
+        padding:0 3rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .about-us-options-div{
+        display: block;
+    }
+
+    .section-four {
+        height: 900px;
+    }
+
+    .about-us-options-col{
+        padding:0 3rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .about-us-options-div{
+        display: flex;
+    }
+
+    .section-four {
+        height: 800px;
+    }
+
+    .about-us-options-col{
+        padding:0;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .about-us-options-div{
+        display: flex;
+    }
+
+    .section-four {
+        height: 700px;
+    }
+
+    .about-us-options-col{
+        padding:0;
+    }
+}
+
+@media (min-width: 1370px) { 
+    .about-us-options-div{
+        display: flex;
+    }
+
+    .section-four {
+        height: 600px;
+    }
+
+    .about-us-options-col{
+        padding:0;
+    }
+}

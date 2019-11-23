@@ -1,0 +1,44 @@
+.section-five {
+    height: 500px;
+    background: linear-gradient(to right, #ffeeee, #ddefbb);;
+}
+
+.review-div{
+    height: 300px;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+}
+
+.review-person{
+    height: 280px;
+    width:240px;
+    border-radius: 10px;
+}
+
+.quote_reverted{
+    transform: rotate(180deg);
+}
+
+.quote_reverted, .quote{
+    font-size: 50px;
+}
+
+.review-text{
+    margin: 0;
+    font-family:'Bree Serif', serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 18px;
+}
+
+.carousel-control-prev,.carousel-control-next{
+    width:7%;
+    background-color: lightgray;
+    opacity:0.2;
+    
+}
+.carousel-control-prev:hover,.carousel-control-next:hover{
+    background-color: lightgray;
+    opacity:0.3;
+}

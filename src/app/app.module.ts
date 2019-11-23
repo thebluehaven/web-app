@@ -3,16 +3,88 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+
+// importing componentns
+import { HomeComponent } from './home/home.component';
+// importing sections
+import { SectionOneComponent } from './sections/section-one/section-one.component';
+import { SectionTwoComponent } from './sections/section-two/section-two.component';
+import { SectionThreeComponent } from './sections/section-three/section-three.component';
+import { SectionFourComponent } from './sections/section-four/section-four.component';
+import { SectionFiveComponent } from './sections/section-five/section-five.component';
+import { SectionSixComponent } from './sections/section-six/section-six.component';
+import { SearchResultsComponent } from './modals/search-results/search-results.component';
+import { GalleryModalComponent } from './modals/gallery-modal/gallery-modal.component';
+import { LocationModalComponent } from './modals/location-modal/location-modal.component';
+import { VideoModalComponent } from './modals/video-modal/video-modal.component';
+import { PopupModalComponent } from './modals/popup-modal/popup-modal.component';
+
+// angular material
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    SectionOneComponent,
+    SectionTwoComponent,
+    SectionThreeComponent,
+    SectionFourComponent,
+    SectionFiveComponent,
+    SectionSixComponent,
+    SearchResultsComponent,
+    GalleryModalComponent,
+    LocationModalComponent,
+    VideoModalComponent,
+    PopupModalComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatDialogModule,
+    FormsModule,
+    MatInputModule,
+    MatChipsModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatDividerModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  exports: [
+    MatSelectModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatChipsModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatDividerModule
+  ],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    // SearchResultsComponent,
+    // GalleryModalComponent,
+    // LocationModalComponent,
+    // VideoModalComponent,
+    PopupModalComponent
+  ]
 })
 export class AppModule { }

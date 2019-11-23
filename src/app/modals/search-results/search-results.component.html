@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col col-lg-9 col-md-9 col-sm-9 flex-column">
+        <p class="mr-3">Your Selection :</p>
+        <mat-chip-list aria-label="Selections">
+            <mat-chip *ngIf="data.type.value">{{data.type.viewValue}} <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="data.lookingForOption.value">{{data.lookingForOption.viewValue}}<mat-icon matChipRemove>
+                    cancel
+                </mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="data.location.value">{{data.location.viewValue}}<mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <mat-chip *ngIf="data.budget.value">{{data.budget.viewValue}}<mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+</div>
+<div class="row buildings-list-container mt-3">
+    <div class="col col-lg-12 col-md-12 col-sm-12 p-0">
+        <ul class="buildings-ul">
+            <li *ngFor="let building of buildings" class="mt-2 buidling-row p-2">
+                <div class="row">
+                    <div class="col col-lg-3 col-md-3 col-sm-3">
+                        <img src="../../../assets/images/building1.jpg" class="building-image" />
+                    </div>
+                    <div class="col col-lg-9 col-md-9 col-sm-9 p-0">
+                        <div class="row">
+                            <div class="col col-lg-12 col-md-12 col-sm-12 p-0 pl-3"><b>{{ building.name }}</b></div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-lg-12 col-md-12 col-sm-12 p-0"><img
+                                    src="https://img.icons8.com/android/24/000000/marker.png" class="pin-image">
+                                <p style="font-size:14px;color:gray">{{ building.location }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-lg-12 col-md-12 col-sm-12 p-0 pl-3">
+                                Flats available: <b>{{ building.flats }}</b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-lg-12 col-md-12 col-sm-12 p-0 pl-3">
+                                Price starts from: <img
+                                src="../../../assets/images/rupee.png" class="rupee-image"><b>{{ building.price }}</b>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col col-lg-2 col-md-2 col-sm-2 p-0 text-center">
+                                <a (click)="openGalleryDialog()" class="building-links">View gallery</a>
+                            </div>
+
+                            <div class="col col-lg-4 col-md-4 col-sm-4 p-0 text-center">
+                                <a (click)="openLocationDialog()" class="building-links">View location on map</a>
+                            </div>
+
+                            <div class="col col-lg-3 col-md-3 col-sm-3 p-0 text-left">
+                                <a (click)="openVideoDialog(building.video)" class="building-links"> View video</a>
+                            </div>
+
+                            <div class="col col-lg-3 col-md-3 col-sm-3 p-0">
+                                <button class="submit-button" color="primary" mat-raised-button>Select building</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+.section-two{
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+}
+
+.submit-button{
+    width:150px;
+}
+
+button:focus{
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+/* media query for mob */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .submit-button{
+        width:150px;
+    }
+
+    .button-row{
+        margin-top:1.2rem;
+    }
+
+    .section-two {
+        height: 400px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .submit-button{
+        width:150px;
+    }
+
+    .button-row{
+        margin-top:1.2rem;
+    }
+
+    .section-two {
+        height: 400px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .submit-button{
+        width:150px;
+    }
+
+    .button-row{
+        margin-top:1.2rem;
+    }
+
+    .section-two {
+        height: 400px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .submit-button{
+        width:200px;
+    }
+
+    .button-row{
+        margin-top:2.5rem;
+    }
+
+    .section-two {
+        height: 300px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .submit-button{
+        width:200px;
+    }
+
+    .button-row{
+        margin-top:2.5rem;
+    }
+
+    .section-two {
+        height: 300px;
+    }
+}
+
+@media (min-width: 1370px) { 
+    .submit-button{
+        width:200px;
+    }
+
+    .button-row{
+        margin-top:2.5rem;
+    }
+    
+    .section-two {
+        height: 300px;
+    }
+
+
+}
