@@ -7,20 +7,12 @@ mat-chip-list, p {
     padding:0;
 }
 
-.buidling-row{
-    height: 180px;
-    /* border-radius: 10px; */
-    border-bottom: 1px solid gray;
-}
-
 .buidling-row:hover{
     background: #f3f3f3;
     cursor: pointer;
 }
 
 .building-image{
-    width: 160px;
-    height: 160px;
     border-radius: 4px;
 }
 
@@ -49,4 +41,157 @@ button:focus{
     border: none;
     box-shadow: none;
     outline: none;
+}
+
+
+
+/* media query for mob */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .building-image{
+        width: 100px;
+        height: 100px;
+    }
+
+    .buidling-row{
+        display: block;
+        text-align: center;
+    }
+
+    .padding-3{
+        padding-left:15px;
+    }
+
+    .view-row{
+        display: block;
+    }
+
+    .submit-button{
+        margin-top: 10px
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .building-image{
+        width: 100px;
+        height: 100px;
+    }
+
+    .buidling-row{
+        display: block;
+        text-align: center;
+    }
+
+    .padding-3{
+        padding-left:15px;
+    }
+
+    .view-row{
+        display: block;
+    }
+
+    .submit-button{
+        margin-top: 10px
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .building-image{
+        width: 120px;
+        height: 120px;
+    }
+
+    .buidling-row{
+        display: block;
+        text-align: center;
+    }
+
+    .padding-3{
+        padding-left:15px;
+    }
+
+    .view-row{
+        display: block;
+    }
+
+    .submit-button{
+        margin-top: 10px
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .building-image{
+        width: 160px;
+        height: 160px;
+    }
+
+    .buidling-row{
+        display: flex;
+        text-align: left;
+    }
+
+    .padding-3{
+        padding-left:1rem;
+    }
+
+    .view-row{
+        display: flex;
+    }
+
+    .submit-button{
+        margin:0
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .building-image{
+        width: 160px;
+        height: 160px;
+    }
+
+    .buidling-row{
+        display: flex;
+        text-align: left;
+    }
+
+    .padding-3{
+        padding-left:1rem;
+    }
+
+    .view-row{
+        display: flex;
+    }
+
+    .submit-button{
+        margin:0
+    }
+}
+
+@media (min-width: 1370px) { 
+    .building-image{
+        width: 160px;
+        height: 160px;
+    }
+
+    .buidling-row{
+        display: flex;
+        text-align: left;
+    }
+
+    .padding-3{
+        padding-left:1rem;
+    }
+
+    .view-row{
+        display: flex;
+    }
+
+    .submit-button{
+        margin:0
+    }
 }

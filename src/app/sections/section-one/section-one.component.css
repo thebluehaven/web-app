@@ -7,6 +7,14 @@
     background-size: cover;
 }
 
+.navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
 .header-logo{
     width: 203px;
     height: 23px;
