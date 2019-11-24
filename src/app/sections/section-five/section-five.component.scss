@@ -45,6 +45,14 @@
     font-family:'Bree Serif', serif;
 }
 
+.review-comp {
+    color:brown
+}
+
+.carousel-inner .active + .carousel-item {
+    display: none;
+}
+
 
 /* media query for mob */
 

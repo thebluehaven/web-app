@@ -21,6 +21,26 @@ export class ServicesService {
     );
   }
 
+  getFilteredBuildings(data: any): Observable<constants.BuildingObject[]> {
+    let str = '';
+    if (data.location){
+      str += 'location=' + data.location;
+    }
+    if (data.budget){
+      str += 'price=' + data.budget;
+    }
+    if (data.type){
+      str += 'type=' + data.type;
+    }
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<constants.BuildingObject[]>(constants.baseUrl + 'buildings/filter/' + str).pipe(
+      map(res => {
+        // tslint:disable-next-line: no-string-literal
+        return res['result'];
+      })
+    );
+  }
+
   getTestimonials(): Observable<constants.Testimonial[]> {
     return this.http.get<constants.Testimonial[]>(constants.baseUrl + 'testimonials').pipe(
       map(res => {

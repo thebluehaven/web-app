@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupModalComponent } from '../../popup-modal/popup-modal.component';
 import { ServicesService } from 'src/app/services.service';
@@ -12,6 +12,8 @@ import { BuildingObject } from 'src/app/CONSTANTS';
 })
 
 export class SearchResultsListComponent implements OnInit {
+    @Input()
+    data: any;
     @Output()
     public goForward: EventEmitter<BuildingObject> = new EventEmitter<BuildingObject>();
     buildings: BuildingObject[];
@@ -24,7 +26,7 @@ export class SearchResultsListComponent implements OnInit {
             data: { video: link, type: 'video' }
         });
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
+            // console.log('The dialog was closed');
         });
     }
 
@@ -35,7 +37,7 @@ export class SearchResultsListComponent implements OnInit {
             data: { type: 'gallery' }
         });
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
+            // console.log('The dialog was closed');
         });
     }
 
@@ -46,7 +48,7 @@ export class SearchResultsListComponent implements OnInit {
             data: { type: 'location' }
         });
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
+            // console.log('The dialog was closed');
         });
     }
 
@@ -55,24 +57,32 @@ export class SearchResultsListComponent implements OnInit {
     }
 
     getBuildings(): void {
-        let availableCount = 0;
-        this.appService.getBuildings()
-            .subscribe(buildings => this.buildings = buildings.map(x => {
-                x.room_type.forEach(element => {
-                    availableCount += element.available;
-                });
-                return {
-                    name: x.name,
-                    room_type: x.room_type.map((y: { name: string; }) => y.name).join(' | '),
-                    price: x.room_type['1bhk'].price,
-                    location: x.location,
-                    deposit: x.room_type['1bhk'].deposit,
-                    video_link: x.video_link,
-                    photos_link: x.photos_link,
-                    short_name: x.short_name,
-                    description: x.description,
-                    available : availableCount
-                };
-            }));
+        const payload = {
+            type: this.data.aType.value,
+            budget: this.data.budget.value,
+            location: this.data.location.value
+        }
+        this.appService.getFilteredBuildings(payload)
+        .subscribe(buildings => this.buildings = buildings.map(x => {
+            const bPrice = []; const bDeposit = [];
+            let availableCount = 0;
+            x.room_type.forEach(element => {
+                availableCount += element.available;
+                bPrice.push(element.price);
+                bDeposit.push(element.deposit);
+            });
+            return {
+                name: x.name,
+                room_type: x.room_type.map((y: { name: string; }) => y.name).join(' | '),
+                price : Math.min(...bPrice),
+                location: x.location,
+                deposit : Math.min(...bDeposit),
+                video_link: x.video_link,
+                photos_link: x.photos_link,
+                short_name: x.short_name,
+                description: x.description,
+                available: x.available ? availableCount : false
+            };
+        }));
     }
 }

@@ -20,7 +20,7 @@
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Select</ng-template>
-            <app-search-results-list (goForward)="goForward($event, stepper)"></app-search-results-list>
+            <app-search-results-list (goForward)="goForward($event, stepper)" [data]="data"></app-search-results-list>
         </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">

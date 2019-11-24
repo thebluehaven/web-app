@@ -3,7 +3,7 @@
 }
 
 .contacts{
-    border-left: 1px solid lightgray;
+    border-left: 1px solid brown;
     height: 340px;
 }
 
@@ -12,6 +12,7 @@
     font-family:'Bree Serif', serif;
     font-weight: bold;
     font-size: 45px;
+    color:brown
 }
 
 .story-content{
@@ -19,7 +20,7 @@
     font-family:'Bree Serif', serif;
     font-size: 20px;
     text-align: justify;
-    color:rgb(158, 85, 85)
+    color:chocolate
 }
 
 .footer{
@@ -40,8 +41,10 @@
 
 .mail, .call{
     display: inline;
+    color:brown
 }
 
 p.mail, p.call {
     vertical-align: super;
+    color:chocolate
 }

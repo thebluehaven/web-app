@@ -42,17 +42,15 @@ export class SectionTwoComponent {
 
     locations: Location[] = [
         { value: 'sjp', viewValue: 'Sarjapur Road' },
-        { value: 'kdh', viewValue: 'Kodathi' },
+        { value: 'kdt', viewValue: 'Kodathi' },
         { value: 'hlk', viewValue: 'Halanayakanhalli' }
     ];
 
     budgets: Budget[] = [
-        { value: '8k-9k', viewValue: '8k-9k' },
-        { value: '9k-11k', viewValue: '9k-11k' },
-        { value: '11k-14k', viewValue: '11k-14k' },
-        { value: '4k-17k', viewValue: '14k-17k' },
-        { value: '17k-20k', viewValue: '17k-20k' },
-        { value: '20kplus', viewValue: '20k above' }
+        { value: '<10', viewValue: 'Less than 10k' },
+        { value: '10-15', viewValue: '10k - 15k' },
+        { value: '15-20', viewValue: '15k -20k' },
+        { value: '>20', viewValue: '20k above' }
     ];
 
     selected = {
@@ -77,7 +75,7 @@ export class SectionTwoComponent {
           data: {...this.selected, type: 'search'}
         });
         dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
+        //   console.log('The dialog was closed');
         //   this.animal = result;
         });
       }

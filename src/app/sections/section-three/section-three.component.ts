@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BuildingObject } from 'src/app/CONSTANTS';
 import { ServicesService } from 'src/app/services.service';
 // import * as $ from 'jquery';
@@ -7,7 +7,7 @@ declare var $: any;
 @Component({
     selector: 'app-section-three',
     templateUrl: './section-three.component.html',
-    styleUrls: ['./section-three.component.css']
+    styleUrls: ['./section-three.component.css'],
 })
 export class SectionThreeComponent implements OnInit {
     buildings: BuildingObject[];

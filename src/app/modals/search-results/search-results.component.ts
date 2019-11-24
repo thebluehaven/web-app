@@ -23,11 +23,11 @@ export class SearchResultsComponent implements OnInit {
       this.secondFormGroup = this.formBuilder.group({
         secondCtrl: ['', Validators.required]
       });
-      console.log(this.data)
+      // console.log(this.data)
     }
 
     goForward($event: string, stepper: MatStepper) {
         stepper.next();
-        console.log($event);
+        // console.log($event);
     }
 }
