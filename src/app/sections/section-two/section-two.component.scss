@@ -48,6 +48,18 @@ button:focus{
 .reset-button{
     color:brown;
 }
+
+::ng-deep .mat-option-text{
+    color:brown;
+}
+
+::ng-deep .mat-form-field-label , ::ng-deep .mat-select-arrow{
+    color: brown !important;
+}
+
+::ng-deep .mat-form-field-ripple {
+    background-color: brown !important;
+}
 /* media query for mob */
 
 /* Extra small devices (phones, 600px and down) */

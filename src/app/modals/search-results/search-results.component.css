@@ -5,6 +5,13 @@ mat-chip-list, p {
     padding:0 !important;
 }
 
+::ng-deep .mat-step-header .mat-step-icon-selected {
+    background-color: brown !important;
+}
+
+::ng-deep .mat-progress-spinner circle, ::ng-deep .mat-spinner circle {
+    stroke: brown;
+}
 
 /* media query for mob */
 
