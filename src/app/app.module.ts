@@ -19,7 +19,8 @@ import { GalleryModalComponent } from './modals/gallery-modal/gallery-modal.comp
 import { LocationModalComponent } from './modals/location-modal/location-modal.component';
 import { VideoModalComponent } from './modals/video-modal/video-modal.component';
 import { PopupModalComponent } from './modals/popup-modal/popup-modal.component';
-import { SearchResultsListComponent } from './modals/search-results/search-results-list/search-results-list.component'
+import { SearchResultsListComponent } from './modals/search-results/search-results-list/search-results-list.component';
+import { CustomizeComponent } from './modals/search-results/customize/customize.component'
 
 // angular material
 import { MatSelectModule } from '@angular/material/select';
@@ -53,7 +54,8 @@ import { HttpClientModule }    from '@angular/common/http';
     LocationModalComponent,
     VideoModalComponent,
     PopupModalComponent,
-    SearchResultsListComponent
+    SearchResultsListComponent,
+    CustomizeComponent
   ],
   imports: [
     BrowserModule,

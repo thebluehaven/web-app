@@ -15,6 +15,8 @@ export class SearchResultsComponent implements OnInit {
     public data: any;
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
+
+    selectedBuilding: any;
     constructor(private formBuilder: FormBuilder) {}
 
     ngOnInit() {
@@ -23,11 +25,10 @@ export class SearchResultsComponent implements OnInit {
       this.secondFormGroup = this.formBuilder.group({
         secondCtrl: ['', Validators.required]
       });
-      // console.log(this.data)
     }
 
     goForward($event: string, stepper: MatStepper) {
+        this.selectedBuilding = $event;
         stepper.next();
-        // console.log($event);
     }
 }

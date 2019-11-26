@@ -1,0 +1,58 @@
+<div class="row buildings-list-container mt-3">
+    <div class="col col-lg-12 col-md-12 col-sm-12 p-0">
+        <div class="row buidling-row">
+            <div class="col col-lg-3 col-md-3 col-sm-3">
+                <img [src]="data.photos_link" class="building-image" />
+            </div>
+            <div class="col col-lg-9 col-md-9 col-sm-9 p-0">
+                <div class="row">
+                    <div class="col col-lg-12 col-md-12 col-sm-12 padding-3">
+                        <b style="display: inline-block;margin-right:10px;color:brown">{{ data.name }}</b>
+                        <p style="display: inline-block;font-size: 14px;margin:0;">{{data.short_name}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-lg-12 col-md-12 col-sm-12 pl-3">
+                        <p style="font-size:14px;color:gray">{{ data.location }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-lg-12 col-md-12 col-sm-12 padding-3">
+                        Flats available: <b style="color:chocolate">{{ data.room_type }}</b>
+                    </div>
+                </div>
+                <div class="row p-2 pt-4">
+                    <img src="../../../../assets/images/security.png" class="amenities-icon" /><span
+                        class="amenities-text">Security</span>
+                    <img src="../../../../assets/images/tap.png" class="amenities-icon" /><span
+                        class="ameniies-text">24/7 Water</span>
+                    <img src="../../../../assets/images/cctv.png" class="amenities-icon" /><span
+                        class="amenities-text">CCTV</span>
+                    <img src="../../../../assets/images/pet-friendly.png" class="amenities-icon" /><span
+                        class="amenities-text">Pet-friendly</span>
+                    <img src="../../../../assets/images/parking.png" class="amenities-icon" /><span
+                        class="amenities-text">Parking</span>
+                    <img src="../../../../assets/images/bounce.png" class="amenities-icon" /><span
+                        class="amenities-text">Bounce</span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5 basic-amenities-row align-items-end">
+            <div class="col col-lg-2 col-md-2 col-sm-2 ml-4 text-right" style="border-right: 2px solid chocolate;">
+                <p class="amenities-side-text">Basic Amenities</p>
+            </div>
+            <div class="col col-lg-9 col-md-9 col-sm-9"></div>
+        </div>
+        <div class="row mt-4 basic-amenities-row align-items-end">
+            <div class="col col-lg-2 col-md-2 col-sm-2 ml-4 text-right" style="border-right: 2px solid chocolate;">
+                <p class="amenities-side-text">Furnishing Amenities</p>
+            </div>
+            <div class="col col-lg-9 col-md-9 col-sm-9"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row footer-base justify-content-center">
+    <div class="col col-lg-10 col-md-10 col-sm-10"></div>
+</div>

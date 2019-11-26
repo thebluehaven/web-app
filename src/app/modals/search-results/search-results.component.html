@@ -26,13 +26,8 @@
     <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Customize</ng-template>
-            <mat-form-field>
-                <input matInput placeholder="Address" formControlName="secondCtrl" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
-            </div>
+            <app-customize *ngIf="selectedBuilding" (goForward)="goForward($event, stepper)" [data]="selectedBuilding">
+            </app-customize>
         </form>
     </mat-step>
     <mat-step>
@@ -44,5 +39,4 @@
         </div>
     </mat-step>
 </mat-horizontal-stepper>
-
 

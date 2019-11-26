@@ -2,11 +2,6 @@ p {
     display: inline-block;
 }
 
-.buildings-ul{
-    list-style-type: none;
-    padding:0;
-}
-
 .buidling-row:hover{
     cursor: pointer;
 }
@@ -46,8 +41,35 @@ button:focus{
     background: brown;
     color:white;
 }
+.amenities-icon{
+    width:18px;
+    height: 18px;
+    margin-right:10px;
+}
+
+.amenities-text{
+    margin-right:8px;
+    font-size:14px;
+}
+
+.amenities-side-text {
+    color: brown;
+    font-size:18px;    
+    font-family:'Bree Serif', serif;
+    margin: 0;
+}
+
+.basic-amenities-row {
+    height: 70px;
+}
 
 
+.footer-base{
+    position: relative;
+    bottom: 0;
+    height: 100px;
+    background: brown;
+}
 /* media query for mob */
 
 /* Extra small devices (phones, 600px and down) */

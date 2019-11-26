@@ -5,12 +5,16 @@ mat-chip-list, p {
     padding:0 !important;
 }
 
-::ng-deep .mat-step-header .mat-step-icon-selected {
+::ng-deep .mat-step-header .mat-step-icon-selected, ::ng-deep .mat-step-icon-state-edit {
     background-color: brown !important;
 }
 
 ::ng-deep .mat-progress-spinner circle, ::ng-deep .mat-spinner circle {
     stroke: brown;
+}
+
+::ng-deep .mat-standard-chip .mat-chip-remove.mat-icon {
+    color:black;
 }
 
 /* media query for mob */
