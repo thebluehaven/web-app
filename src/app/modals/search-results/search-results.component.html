@@ -26,7 +26,7 @@
     <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Customize</ng-template>
-            <app-customize *ngIf="selectedBuilding" (goForward)="goForward($event, stepper)" [data]="selectedBuilding">
+            <app-customize *ngIf="selectedBuilding" (goForward)="goForward($event, stepper)" (goBack)="goBack(stepper)" [data]="selectedBuilding">
             </app-customize>
         </form>
     </mat-step>
@@ -35,7 +35,6 @@
         You are now done.
         <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
         </div>
     </mat-step>
 </mat-horizontal-stepper>

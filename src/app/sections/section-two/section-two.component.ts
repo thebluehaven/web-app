@@ -70,7 +70,7 @@ export class SectionTwoComponent {
 
     openDialog(): void {
         const dialogRef = this.dialog.open(PopupModalComponent, {
-          width: '900px',
+          width: '1100px',
           height: '90vh',
           data: {...this.selected, type: 'search'}
         });

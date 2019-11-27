@@ -49,7 +49,6 @@ button:focus{
 
 .amenities-text{
     margin-right:8px;
-    font-size:14px;
 }
 
 .amenities-side-text {
@@ -65,11 +64,64 @@ button:focus{
 
 
 .footer-base{
-    position: relative;
-    bottom: 0;
     height: 100px;
-    background: brown;
+    border-top: 2px solid brown;
 }
+
+.confirm-btn {
+    background: brown;
+    color: white;
+}
+
+.optional-text {
+    color: chocolate;
+    font-size:13px;
+    font-style: italic;
+}
+
+:host /deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: brown;
+}
+:host /deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: brown;
+}
+
+::ng-deep .mat-slide-toggle {
+    width: 180px !important;
+}
+
+.price-headings {
+    color: brown;
+    font-size:16px;    
+    font-family:'Bree Serif', serif;
+}
+
+.price-data {
+    color: chocolate;
+    font-size:17px;    
+    font-family:'Bree Serif', serif;
+}
+
+.terms-conditions {
+    color: chocolate;
+    font-size: 14px;
+    font-family:'Bree Serif', serif;
+}
+
+.price-data-total {
+    color: brown;
+    font-size: 25px;
+}
+
+.building-name {
+    color:brown;
+}
+
+.buidling-code {
+    font-size: 14px;
+    margin:0;
+}
+
 /* media query for mob */
 
 /* Extra small devices (phones, 600px and down) */
@@ -95,6 +147,23 @@ button:focus{
     .submit-button{
         margin-top: 10px
     }
+
+   .amenities-row {
+       display: block;
+   }
+
+   .amenities-text{
+       font-size: 10px;
+   }
+
+   .building-name {
+       display: block;
+       margin:0;
+   }
+
+   .buidling-code {
+       display: block;
+   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -120,6 +189,25 @@ button:focus{
     .submit-button{
         margin-top: 10px
     }
+
+    .amenities-row {
+        display: block;
+    }
+
+    .amenities-text{
+        font-size: 10px;
+    }
+
+    .building-name {
+        display: block;
+        margin:0;
+    }
+
+    .buidling-code {
+        display: block;
+        margin-left: 0px;
+    }
+
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -144,6 +232,23 @@ button:focus{
 
     .submit-button{
         margin-top: 10px
+    }
+
+    .amenities-row {
+        display: block;
+    }
+
+    .amenities-text{
+        font-size: 10px;
+    }
+
+    .building-name {
+        display: block;
+    }
+
+    .buidling-code {
+        display: block;
+        margin-left: 0px;
     }
 }
 
@@ -170,6 +275,23 @@ button:focus{
     .submit-button{
         margin:0
     }
+
+    .amenities-row {
+        display: flex;
+    }
+
+    .amenities-text{
+        font-size: 14px;
+    }
+
+    .building-name {
+        display: inline-block;
+    }
+
+    .buidling-code {
+        display: inline-block;
+        margin-left: 10px;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -195,6 +317,23 @@ button:focus{
     .submit-button{
         margin:0
     }
+
+    .amenities-row {
+        display: flex;
+    }
+
+    .amenities-text{
+        font-size: 14px;
+    }
+
+    .building-name {
+        display: inline-block;
+    }
+
+    .buidling-code {
+        display: inline-block;
+        margin-left: 10px;
+    }
 }
 
 @media (min-width: 1370px) { 
@@ -218,5 +357,22 @@ button:focus{
 
     .submit-button{
         margin:0
+    }
+
+    .amenities-row {
+        display: flex;
+    }
+
+    .amenities-text{
+        font-size: 14px;
+    }
+
+    .building-name {
+        display: inline-block;
+    }
+
+    .buidling-code {
+        display: inline-block;
+        margin-left: 10px;
     }
 }

@@ -43,7 +43,7 @@ export class SectionThreeComponent implements OnInit {
     }
 
     getBuildings(): void {
-        
+
         this.appService.getBuildings()
             .subscribe(buildings => this.buildings = buildings.map(x => {
                 const bPrice = []; const bDeposit = [];
@@ -55,15 +55,21 @@ export class SectionThreeComponent implements OnInit {
                 });
                 return {
                     name: x.name,
-                    room_type: x.room_type.map((y: { name: string; }) => y.name).join(' | '),
-                    price : Math.min(...bPrice),
+                    room_type: x.room_type,
+                    building_id: x.building_id,
+                    rooms: x.room_type.map((y: { name: string; }) => y.name).join(' | '),
+                    price: Math.min(...bPrice),
                     location: x.location,
-                    deposit : Math.min(...bDeposit),
+                    deposit: Math.min(...bDeposit),
                     video_link: x.video_link,
                     photos_link: x.photos_link,
                     short_name: x.short_name,
                     description: x.description,
-                    available: x.available ? availableCount : false
+                    available: x.available ? availableCount : false,
+                    location_map: x.location_map,
+                    near_by: x.near_by,
+                    building_amenities: x.building_amenities,
+                    basic_amenities: x.basic_amenities
                 };
             }));
     }

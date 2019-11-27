@@ -21,41 +21,41 @@ mat-chip-list, p {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    .mat-step-label {
-        display: none;
-    }
+    ::ng-deep .mat-step-label {
+        visibility: hidden;
+     }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-    .mat-step-label {
-        display: none;
-    }
+    ::ng-deep .mat-step-label {
+        visibility: hidden;
+     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    .mat-step-label {
-        display: none;
-    }
+    ::ng-deep .mat-step-label {
+        visibility: hidden;
+     }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    .mat-step-label {
-        display: block;
-    }
+    ::ng-deep .mat-step-label {
+        visibility: visible;
+     }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    .mat-step-label {
-        display: block;
-    }
+    ::ng-deep .mat-step-label {
+        visibility: visible;
+     }
 }
 
 @media (min-width: 1370px) { 
-    .mat-step-label {
-        display: block;
-    }
+    ::ng-deep .mat-step-label {
+        visibility: visible;
+     }
 }

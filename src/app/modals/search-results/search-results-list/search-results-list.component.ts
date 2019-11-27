@@ -18,6 +18,8 @@ export class SearchResultsListComponent implements OnInit {
     public goForward: EventEmitter<BuildingObject> = new EventEmitter<BuildingObject>();
     buildings: BuildingObject[];
 
+    room_type: string
+
     constructor(public dialog: MatDialog, private appService: ServicesService) { }
 
     openVideoDialog(link: string): void {
@@ -53,6 +55,7 @@ export class SearchResultsListComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.room_type = this.data.aType.value;
         this.getBuildings();
     }
 
@@ -73,7 +76,10 @@ export class SearchResultsListComponent implements OnInit {
             });
             return {
                 name: x.name,
-                room_type: x.room_type.map((y: { name: string; }) => y.name).join(' | '),
+                room_type: x.room_type,
+                building_id: x.building_id,
+                // room_type: x.room_type.filter(z => z.room_id.split('_')[1] === this.room_type),
+                rooms: x.room_type.map((y: { name: string; }) => y.name).join(' | '),
                 price : Math.min(...bPrice),
                 location: x.location,
                 deposit : Math.min(...bDeposit),
@@ -81,7 +87,11 @@ export class SearchResultsListComponent implements OnInit {
                 photos_link: x.photos_link,
                 short_name: x.short_name,
                 description: x.description,
-                available: x.available ? availableCount : false
+                available: x.available ? availableCount : false,
+                location_map: x.location_map,
+                near_by: x.near_by,
+                building_amenities: x.building_amenities,
+                basic_amenities: x.basic_amenities
             };
         }));
     }
