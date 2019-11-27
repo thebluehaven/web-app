@@ -23,14 +23,15 @@ export class ServicesService {
 
   getFilteredBuildings(data: any): Observable<constants.BuildingObject[]> {
     let str = '';
-    if (data.location){
-      str += 'location=' + data.location;
-    }
-    if (data.budget){
-      str += 'price=' + data.budget;
-    }
+
     if (data.type){
       str += 'type=' + data.type;
+    }
+    if (data.location){
+      str += '&location=' + data.location;
+    }
+    if (data.budget){
+      str += '&price=' + data.budget;
     }
     // tslint:disable-next-line: max-line-length
     return this.http.get<constants.BuildingObject[]>(constants.baseUrl + 'buildings/filter/' + str).pipe(

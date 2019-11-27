@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupModalComponent } from '../popup-modal/popup-modal.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -19,6 +19,7 @@ export class SearchResultsComponent implements OnInit {
 
   selectedBuilding: any;
   seletedPackage: any;
+  public closePopup: EventEmitter<any> = new EventEmitter<any>();
 
   dataToPost: PostObject = {
     preferences: {} as Preferences,
@@ -42,11 +43,22 @@ export class SearchResultsComponent implements OnInit {
     if ($event['type'] === 'step1') {
       this.selectedBuilding = $event['building'];
       this.dataToPost.building.building_id = this.selectedBuilding.building_id;
+      stepper.next();
     } else if ($event['type'] === 'step2'){
       this.seletedPackage = $event['package'];
       this.dataToPost.building.basic_amenities = this.seletedPackage.basic_amenities;
       this.dataToPost.building.furnishing_amenities = this.seletedPackage.furnishing_amenities;
+      stepper.next();
+    } else if ($event['type'] === 'step3') {
+      this.postData();
     }
-    stepper.next();
+  }
+
+  goBack(stepper: MatStepper) {
+    stepper.previous();
+  }
+
+  postData() {
+    this.closePopup.emit();
   }
 }

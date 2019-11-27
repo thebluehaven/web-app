@@ -47,14 +47,14 @@ export class SectionTwoComponent {
     ];
 
     budgets: Budget[] = [
-        { value: '<10', viewValue: 'Less than 10k' },
+        { value: 'lt10', viewValue: 'Less than 10k' },
         { value: '10-15', viewValue: '10k - 15k' },
-        { value: '15-20', viewValue: '15k -20k' },
-        { value: '>20', viewValue: '20k above' }
+        { value: '15-20', viewValue: '15k - 20k' },
+        { value: 'gt20', viewValue: '20k above' }
     ];
 
     selected = {
-        aType : {},
+        aType: {},
         lookingForOption: {},
         location: {},
         budget: {}
@@ -64,28 +64,31 @@ export class SectionTwoComponent {
 
     submitRequest() {
         // tslint:disable-next-line: max-line-length
-        if (!this.selected.budget['value'] && !this.selected.location['value'] && !this.selected.lookingForOption['value'] && !this.selected.aType['value']){ }
-        else {this.openDialog(); }
+        if (!this.selected.budget['value'] && !this.selected.location['value'] && !this.selected.lookingForOption['value'] && !this.selected.aType['value']) { }
+        else { this.openDialog(); }
     }
 
     openDialog(): void {
-        const dialogRef = this.dialog.open(PopupModalComponent, {
-          width: '1100px',
-          height: '90vh',
-          data: {...this.selected, type: 'search'}
-        });
-        dialogRef.afterClosed().subscribe(result => {
-        //   console.log('The dialog was closed');
-        //   this.animal = result;
-        });
-      }
+        if (!this.selected.aType['value']) {
+            const dialogRef = this.dialog.open(PopupModalComponent, {
+                width: '700px',
+                data: { errorText: 'Please select accomodation type', okButton: 'Ok', type: 'error' }
+            });
+         } else {
+            const dialogRef = this.dialog.open(PopupModalComponent, {
+                width: '1100px',
+                height: '90vh',
+                data: { ...this.selected, type: 'search' }
+            });
+        }
+    }
 
-      reset() {
-          this.selected = {
-            aType : {},
+    reset() {
+        this.selected = {
+            aType: {},
             lookingForOption: {},
             location: {},
             budget: {}
         };
-      }
+    }
 }

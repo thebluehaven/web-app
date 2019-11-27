@@ -26,16 +26,13 @@
     <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Customize</ng-template>
-            <app-customize *ngIf="selectedBuilding" (goForward)="goForward($event, stepper)" (goBack)="goBack(stepper)" [data]="selectedBuilding">
+            <app-customize *ngIf="selectedBuilding" (goForward)="goForward($event, stepper)" (goBack)="goBack(stepper)"
+                [data]="selectedBuilding">
             </app-customize>
         </form>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Move-in</ng-template>
-        You are now done.
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-        </div>
+        <app-movein *ngIf="seletedPackage" (done)="goForward($event, stepper)" (goBack)="goBack(stepper)" [data]="seletedPackage"></app-movein>
     </mat-step>
 </mat-horizontal-stepper>
-

@@ -1,0 +1,28 @@
+.done-btn {
+    background: brown;
+    color: white;
+}
+
+.heading-text {
+    margin: 0;
+    font-size: 20px;
+    color: brown;
+    font-family:'Bree Serif', serif;
+}
+
+.contact-form {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.email-full-width {
+    width: 52%;
+}
+
+.width-quarter {
+    width:25%;
+}
+
+::ng-deep .mat-datepicker-toggle-default-icon {
+    color: brown;
+}

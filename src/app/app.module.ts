@@ -20,8 +20,9 @@ import { LocationModalComponent } from './modals/location-modal/location-modal.c
 import { VideoModalComponent } from './modals/video-modal/video-modal.component';
 import { PopupModalComponent } from './modals/popup-modal/popup-modal.component';
 import { SearchResultsListComponent } from './modals/search-results/search-results-list/search-results-list.component';
-import { CustomizeComponent } from './modals/search-results/customize/customize.component'
-
+import { CustomizeComponent } from './modals/search-results/customize/customize.component';
+import { MoveinComponent } from './modals/search-results/move-in/move-in.component';
+import { ErrorComponent } from './modals/error/error.component';
 // angular material
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,8 +38,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { HttpClientModule } from '@angular/common/http';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -56,7 +60,9 @@ import { HttpClientModule } from '@angular/common/http';
     VideoModalComponent,
     PopupModalComponent,
     SearchResultsListComponent,
-    CustomizeComponent
+    CustomizeComponent,
+    MoveinComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +82,10 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   exports: [
     MatSelectModule,
@@ -92,17 +101,18 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   providers: [
+    MatNativeDateModule,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-US' },
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    // SearchResultsComponent,
-    // GalleryModalComponent,
-    // LocationModalComponent,
-    // VideoModalComponent,
     PopupModalComponent
   ]
 })

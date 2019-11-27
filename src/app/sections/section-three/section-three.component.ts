@@ -69,6 +69,7 @@ export class SectionThreeComponent implements OnInit {
                     location_map: x.location_map,
                     near_by: x.near_by,
                     building_amenities: x.building_amenities,
+                    furnishing_amenities: x.furnishing_amenities,
                     basic_amenities: x.basic_amenities
                 };
             }));

@@ -20,30 +20,19 @@ export class CustomizeComponent implements OnInit {
     amenitiesSelectedCount = 0;
 
     selectedObj = {
-        basic_amenities : [],
+        basic_amenities: [],
         furnishing_amenities: []
     };
 
     ngOnInit() {
         // tslint:disable-next-line: no-string-literal
-        this.data['furnishing_amenities'] = [
-            { name: 'Single bed', price: 599, selected: false },
-            { name: 'double bed', price: 899, selected: false },
-            { name: 'divan', price: 1149, selected: false },
-            { name: 'Wardrobe', price: 599, selected: false },
-            { name: 'TV', price: 1249, selected: false },
-            { name: 'Refrigerator', price: 949, selected: false },
-            { name: 'Washing Machine', price: 1099, selected: false },
-            { name: 'Shoe rack', price: 499 },
-            { name: 'Center table', price: 450, selected: false },
-            { name: 'Dressing Table', price: 440, selected: false },
-            { name: 'Microwave', price: 450, selected: false },
-            { name: 'Mini Fridge', price: 675, selected: false },
-        ];
+        this.data['furnishing_amenities'].map(x => {
+            return { ...x, selected: false };
+        });
 
         // tslint:disable-next-line: no-string-literal
-        this.data['basic_amenities'].map(x => { 
-            return {...x, selected: false }
+        this.data['basic_amenities'].map(x => {
+            return { ...x, selected: false };
         });
 
         this.totalPrice = this.data.room_type[0].price;

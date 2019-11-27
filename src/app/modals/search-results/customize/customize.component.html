@@ -22,18 +22,8 @@
                     </div>
                 </div>
                 <div class="row p-4 amenities-row">
-                    <img src="../../../../assets/images/security.png" class="amenities-icon" /><span
-                        class="amenities-text">Security</span>
-                    <img src="../../../../assets/images/tap.png" class="amenities-icon" /><span
-                        class="amenities-text">24/7 Water</span>
-                    <img src="../../../../assets/images/cctv.png" class="amenities-icon" /><span
-                        class="amenities-text">CCTV</span>
-                    <img src="../../../../assets/images/pet-friendly.png" class="amenities-icon" /><span
-                        class="amenities-text">Pet-friendly</span>
-                    <img src="../../../../assets/images/parking.png" class="amenities-icon" /><span
-                        class="amenities-text">Parking</span>
-                    <img src="../../../../assets/images/bounce.png" class="amenities-icon" /><span
-                        class="amenities-text">Bounce</span>
+                    <div *ngFor="let ba of data.building_amenities"> <img [src]="ba.image_url"
+                            class="amenities-icon" /><span class="amenities-text">{{ba.name}}</span></div>
                 </div>
             </div>
         </div>
@@ -43,8 +33,8 @@
                 <p class="optional-text">(optional)</p>
             </div>
             <div class="col col-lg-9 col-md-9 col-sm-9 px-4 pt-2" style="height: inherit;">
-                <mat-slide-toggle *ngFor="let ba of data.basic_amenities" class="mx-4"
-                [checked]="ba.selected" (toggleChange)="ba.selected=!ba.selected;changePrice(ba)">{{ba.name}}
+                <mat-slide-toggle *ngFor="let ba of data.basic_amenities" class="mx-4" [checked]="ba.selected"
+                    (toggleChange)="ba.selected=!ba.selected;changePrice(ba)">{{ba.name}}
                 </mat-slide-toggle>
             </div>
         </div>
@@ -54,29 +44,46 @@
                 <p class="optional-text">(optional)</p>
             </div>
             <div class="col col-lg-9 col-md-9 col-sm-9 px-4" style="height: inherit;">
-                <mat-slide-toggle *ngFor="let fa of data.furnishing_amenities" class="mx-4 py-1"
-                [checked]="fa.selected" (toggleChange)="fa.selected=!fa.selected;changePrice(fa)">{{fa.name}}
+                <mat-slide-toggle *ngFor="let fa of data.furnishing_amenities" class="mx-4 py-1" [checked]="fa.selected"
+                    (toggleChange)="fa.selected=!fa.selected;changePrice(fa)">{{fa.name}}
                 </mat-slide-toggle>
             </div>
         </div>
     </div>
     <div class="col col-lg-12 col-md-12 col-sm-12 align-self-end mt-5 p-2 pt-3 footer-base text-right">
         <div class="row">
-            <div class="col col-lg-2 col-md-2 col-sm-2"><p class="price-headings">Deposit</p></div>
-            <div class="col col-lg-2 col-md-2 col-sm-2"><p class="price-headings">Base Price</p></div>
-            <div class="col col-lg-2 col-md-2 col-sm-2"><p class="price-headings">Amenities</p></div>
-            <div class="col col-lg-2 col-md-2 col-sm-2"><p class="price-headings">Total (monthly)</p></div>
+            <div class="col col-lg-2 col-md-2 col-sm-2">
+                <p class="price-headings">Deposit</p>
+            </div>
+            <div class="col col-lg-2 col-md-2 col-sm-2">
+                <p class="price-headings">Base Price</p>
+            </div>
+            <div class="col col-lg-2 col-md-2 col-sm-2">
+                <p class="price-headings">Amenities</p>
+            </div>
+            <div class="col col-lg-2 col-md-2 col-sm-2">
+                <p class="price-headings">Total (monthly)</p>
+            </div>
             <div class="col col-lg-3 col-md-3 col-sm-3">
-                    <p class="terms-conditions" *ngIf="amenitiesSelectedCount > 2">*Looks too much? It's Negotiable.</p>
+                <p class="terms-conditions" *ngIf="amenitiesSelectedCount > 2">*Looks too much? It's Negotiable.</p>
             </div>
         </div>
         <div class="row">
-            <div class="col col-lg-2 col-md-2 col-sm-2"><p class="price-data">{{data.room_type[0].deposit}}</p></div>
-            <div class="col col-lg-2 col-md-2 col-sm-2"><p class="price-data">{{data.room_type[0].price}}</p></div>
-            <div class="col col-lg-2 col-md-2 col-sm-2"><p class="price-data">{{totalAmenitiesPrice}}</p></div>
-            <div class="col col-lg-2 col-md-2 col-sm-2"><p class="price-data price-data-total">{{totalPrice}}*</p></div>
+            <div class="col col-lg-2 col-md-2 col-sm-2">
+                <p class="price-data">{{data.room_type[0].deposit}}</p>
+            </div>
+            <div class="col col-lg-2 col-md-2 col-sm-2">
+                <p class="price-data">{{data.room_type[0].price}}</p>
+            </div>
+            <div class="col col-lg-2 col-md-2 col-sm-2">
+                <p class="price-data">{{totalAmenitiesPrice}}</p>
+            </div>
+            <div class="col col-lg-2 col-md-2 col-sm-2">
+                <p class="price-data price-data-total">{{totalPrice}}*</p>
+            </div>
             <div class="col col-lg-3 col-md-3 col-sm-3">
-                    <button mat-raised-button class="btn confirm-btn"  (click)="goForward.emit({package: selectedObj, type: 'step2'})">Book Slot</button>
+                <button mat-raised-button class="btn confirm-btn"
+                    (click)="goForward.emit({package: selectedObj, type: 'step2'})">Book Slot</button>
             </div>
         </div>
     </div>

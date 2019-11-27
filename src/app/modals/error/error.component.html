@@ -1,0 +1,12 @@
+<div class="row justify-content-center">
+    <div class="col col-lg-9 col-md-9 col-sm-9 text-center">
+        <h3 class="error-heading">Error</h3>
+        <p class="error-text">{{data.errorText}}</p>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col col-lg-9 col-md-9 col-sm-9 text-center">
+        <button *ngIf="data.confirmButton" mat-raised-button class="confirm-btn">{{data.confirmButton}}</button>
+        <button mat-raised-button class="ok-btn" (click)="closePopup.emit()">{{data.okButton}}</button>
+    </div>
+</div>
