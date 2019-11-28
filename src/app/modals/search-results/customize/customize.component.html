@@ -17,9 +17,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col col-lg-12 col-md-12 col-sm-12 padding-3">
+                    <div class="col col-lg-5 col-md-5 col-sm-5 padding-3">
                         Flats available: <b style="color:chocolate">{{ data.rooms }}</b>
                     </div>
+                    <div class="col col-lg-7 col-md-7 col-sm-7 padding-3">
+                        <p style="vertical-align: text-bottom;margin: 0 5px 0 0;">Your choice: </p>
+                        <mat-radio-group aria-label="Select an option" (change)="changeRoomSelection()" [(ngModel)]="data.room_selected">
+                            <mat-radio-button class="mx-1" *ngFor="let room of data.room_type" [value]="room.room_id" >{{room.name}}
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
                 </div>
                 <div class="row p-4 amenities-row">
                     <div *ngFor="let ba of data.building_amenities"> <img [src]="ba.image_url"
@@ -70,10 +78,10 @@
         </div>
         <div class="row">
             <div class="col col-lg-2 col-md-2 col-sm-2">
-                <p class="price-data">{{data.room_type[0].deposit}}</p>
+                <p class="price-data">{{baseDeposit}}</p>
             </div>
             <div class="col col-lg-2 col-md-2 col-sm-2">
-                <p class="price-data">{{data.room_type[0].price}}</p>
+                <p class="price-data">{{basePrice}}</p>
             </div>
             <div class="col col-lg-2 col-md-2 col-sm-2">
                 <p class="price-data">{{totalAmenitiesPrice}}</p>

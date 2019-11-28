@@ -14,6 +14,9 @@ import { BuildingObject } from 'src/app/CONSTANTS';
 export class SearchResultsListComponent implements OnInit {
     @Input()
     data: any;
+    @Input()
+    building: any;
+
     @Output()
     public goForward: EventEmitter<BuildingObject> = new EventEmitter<BuildingObject>();
     buildings: BuildingObject[];
@@ -55,8 +58,13 @@ export class SearchResultsListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.room_type = this.data.aType.value;
-        this.getBuildings();
+        if (this.building) {
+            this.buildings = [];
+            this.buildings.push(this.building);
+        } else {
+            this.room_type = this.data.aType.value;
+            this.getBuildings();
+        }
     }
 
     getBuildings(): void {
@@ -76,9 +84,9 @@ export class SearchResultsListComponent implements OnInit {
                 });
                 return {
                     name: x.name,
-                    room_type: x.room_type,
                     building_id: x.building_id,
-                    // room_type: x.room_type.filter(z => z.room_id.split('_')[1] === this.room_type),
+                    room_type: x.room_type,
+                    room_selected: 'ri_' + this.room_type,
                     rooms: x.room_type.map((y: { name: string; }) => y.name).join(' | '),
                     price: Math.min(...bPrice),
                     location: x.location,

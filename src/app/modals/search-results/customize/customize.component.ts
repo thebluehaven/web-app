@@ -14,6 +14,8 @@ export class CustomizeComponent implements OnInit {
     public goForward: EventEmitter<any> = new EventEmitter<any>();
     constructor() { }
 
+    basePrice = 0;
+    baseDeposit = 0;
     totalPrice = 0;
     totalAmenitiesPrice = 0;
 
@@ -35,7 +37,8 @@ export class CustomizeComponent implements OnInit {
             return { ...x, selected: false };
         });
 
-        this.totalPrice = this.data.room_type[0].price;
+        this.changeRoomSelection();
+        if (!this.data.room_selected) { this.data.room_selected = this.data.room_type[0].room_id; }
     }
 
     changePrice(item: any) {
@@ -56,5 +59,19 @@ export class CustomizeComponent implements OnInit {
             // tslint:disable-next-line: max-line-length
             this.selectedObj.basic_amenities.indexOf(item.id) === -1 ? this.selectedObj.basic_amenities.push(item.id) : this.selectedObj.basic_amenities.filter(x => x.id === item.id);
         }
+    }
+
+    changeRoomSelection() {
+        if (this.data.room_selected) {
+            this.basePrice = this.data.room_type.filter(x => x.room_id === this.data.room_selected)[0].price;
+            this.baseDeposit = this.data.room_type.filter(x => x.room_id === this.data.room_selected)[0].deposit;
+            this.totalPrice = this.data.room_type.filter(x => x.room_id === this.data.room_selected)[0].price;
+        }
+        else {
+            this.basePrice = this.data.room_type[0].price;
+            this.baseDeposit = this.data.room_type[0].deposit;
+            this.totalPrice = this.data.room_type[0].price;
+        }
+
     }
 }

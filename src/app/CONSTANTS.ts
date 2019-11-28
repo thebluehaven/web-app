@@ -53,7 +53,7 @@ export interface Contact {
     phone: string;
     date: Date;
     time: string;
-    callback: string;
+    reqCallback: string;
     query: string;
 }
 

@@ -9,6 +9,11 @@ import * as constants from './CONSTANTS';
   providedIn: 'root'
 })
 export class ServicesService {
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -24,13 +29,13 @@ export class ServicesService {
   getFilteredBuildings(data: any): Observable<constants.BuildingObject[]> {
     let str = '';
 
-    if (data.type){
+    if (data.type) {
       str += 'type=' + data.type;
     }
-    if (data.location){
+    if (data.location) {
       str += '&location=' + data.location;
     }
-    if (data.budget){
+    if (data.budget) {
       str += '&price=' + data.budget;
     }
     // tslint:disable-next-line: max-line-length
@@ -49,5 +54,9 @@ export class ServicesService {
         return res['result'];
       })
     );
+  }
+
+  postLead(data: any): Observable<any> {
+    return this.http.post<any>(constants.baseUrl + 'request', data, this.httpOptions);
   }
 }

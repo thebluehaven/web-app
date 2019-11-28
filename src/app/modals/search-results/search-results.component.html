@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="!data.building">
     <div class="col col-lg-9 col-md-9 col-sm-9 flex-column">
         <p class="mr-3">Your Selection :</p>
         <mat-chip-list aria-label="Selections">
@@ -20,7 +20,7 @@
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Select</ng-template>
-            <app-search-results-list (goForward)="goForward($event, stepper)" [data]="data"></app-search-results-list>
+            <app-search-results-list (goForward)="goForward($event, stepper)" [data]="data" [building]="data.building"></app-search-results-list>
         </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
@@ -33,6 +33,6 @@
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Move-in</ng-template>
-        <app-movein *ngIf="seletedPackage" (done)="goForward($event, stepper)" (goBack)="goBack(stepper)" [data]="seletedPackage"></app-movein>
+        <app-movein *ngIf="selectedPackage" (done)="goForward($event, stepper)" (goBack)="goBack(stepper)" [data]="seletedPackage"></app-movein>
     </mat-step>
 </mat-horizontal-stepper>

@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col text-center p-2">
-                                        <button [hidden]="!building.hover" class="submit-button" color="primary" mat-raised-button>Read
+                                        <button [hidden]="!building.hover" class="submit-button" (click)="openDialog(building)" mat-raised-button>Read
                                             more</button>
                                     </div>
                                 </div>

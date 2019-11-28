@@ -4,7 +4,7 @@
     </div>
 </div>
 
-<app-search-results *ngIf="data.type === 'search'" [data]="data" (closePopup)="onNoClick()"></app-search-results>
+<app-search-results *ngIf="data.type === 'search'" [data]="data" [building]="data.building" (closePopup)="onNoClick()"></app-search-results>
 <app-video *ngIf="data.type === 'video'" [data]="data"></app-video>
 <app-gallery *ngIf="data.type === 'gallery'" [data]="data"></app-gallery>
 <app-location *ngIf="data.type === 'location'" [data]="data"></app-location>

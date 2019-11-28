@@ -1,7 +1,8 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Contact } from 'src/app/CONSTANTS';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { AbstractControl } from '@angular/forms'
 
 export interface Time {
     value: string;
@@ -28,8 +29,9 @@ export class MoveinComponent implements OnInit {
     @Output()
     public goBack: EventEmitter<any> = new EventEmitter<any>();
 
+    contactForm: FormGroup;
     contactDetails: Contact;
-
+    submitted = false;
     times: Time[] = [
         { value: '9-11', viewValue: '9AM - 11AM' },
         { value: '11-1', viewValue: '11AM - 1PM' },
@@ -38,18 +40,65 @@ export class MoveinComponent implements OnInit {
         { value: '5-7', viewValue: '5PM - 7PM' }
     ];
 
-    emailFormControl = new FormControl('', [
-        Validators.required,
-        Validators.email,
-    ]);
-
     matcher = new MyErrorStateMatcher();
-    constructor() {
+    constructor(private formBuilder: FormBuilder) {
     }
 
     ngOnInit() {
-        console.log(this.data);
+        // console.log(this.data);
+        this.contactForm = this.formBuilder.group({
+            firstName: new FormControl('', [Validators.required]),
+            lastName: new FormControl('', [Validators.required]),
+            email: new FormControl('', [
+                Validators.required,
+                Validators.email,
+            ]),
+            phone: new FormControl('', [Validators.required,
+            this.phoneNumberValidator
+            ]),
+            date: new FormControl('', [Validators.required]),
+            reqCallback: new FormControl(),
+            query: new FormControl(),
+            time: new FormControl('', [Validators.required]),
+        });
+
+        this.revert();
     }
 
+    get f() { return this.contactForm.controls; }
+
+    onSubmit() {
+
+        this.submitted = true;
+
+        // stop here if form is invalid
+        if (this.contactForm.invalid) {
+            return;
+        }
+
+        const controls = this.contactForm.controls;
+        this.contactDetails = {
+            firstName: controls.firstName.value,
+            lastName: controls.lastName.value,
+            email: controls.email.value,
+            date: controls.date.value,
+            time: controls.time.value,
+            query: controls.query.value,
+            reqCallback: controls.reqCallback.value,
+            phone: controls.phone.value
+        };
+        this.done.emit({ contact: this.contactDetails, type: 'step3' })
+    }
+
+    revert() {
+        this.contactForm.reset();
+    }
+
+    phoneNumberValidator(control: AbstractControl): { [key: string]: any } | null {
+        const valid = /^\d+$/.test(control.value);
+        return valid
+            ? null
+            : { invalidNumber: { valid: false, value: control.value } }
+    }
 
 }

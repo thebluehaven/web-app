@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BuildingObject } from 'src/app/CONSTANTS';
 import { ServicesService } from 'src/app/services.service';
+import { PopupModalComponent } from 'src/app/modals/popup-modal/popup-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 // import * as $ from 'jquery';
 declare var $: any;
 
@@ -12,7 +14,7 @@ declare var $: any;
 export class SectionThreeComponent implements OnInit {
     buildings: BuildingObject[];
 
-    constructor(private appService: ServicesService) {
+    constructor(private appService: ServicesService, public dialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -74,4 +76,13 @@ export class SectionThreeComponent implements OnInit {
                 };
             }));
     }
+
+    openDialog(selected: BuildingObject): void {
+      
+            const dialogRef = this.dialog.open(PopupModalComponent, {
+                width: '1100px',
+                height: '90vh',
+                data: { building: selected, type: 'search' }
+            });
+        }
 }
