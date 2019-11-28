@@ -68,7 +68,7 @@ button:focus{
     border-top: 2px solid brown;
 }
 
-.confirm-btn {
+.confirm-btn, .confirm-btn-mob {
     background: brown;
     color: white;
 }
@@ -130,6 +130,43 @@ button:focus{
     border-color: brown;
 }
 
+
+.price-headings-mob {
+    margin:0;
+    font-size:13px;
+    font-family:'Bree Serif', serif;
+    color:brown;
+}
+
+.price-data-mob {
+    margin: 0;
+    font-size:14px;
+    font-family:'Bree Serif', serif;
+
+    color: chocolate;
+}
+
+.price-data-total-mob {
+    margin:0;
+    font-size: 16px;
+    font-family:'Bree Serif', serif;
+    color:brown;
+}
+
+.confirm-btn-mob {
+    font-size: 12px;
+}
+
+.amenities-side-text-mob {
+    margin: 0;
+    font-family:'Bree Serif', serif;
+    color:brown;
+}
+
+.optional-text-mob {
+    margin: 0 0 0 8px;
+    color:chocolate
+}
 /* media query for mob */
 
 /* Extra small devices (phones, 600px and down) */
@@ -157,7 +194,7 @@ button:focus{
     }
 
    .amenities-row {
-       display: block;
+       display: flex;
    }
 
    .amenities-text{
@@ -171,6 +208,14 @@ button:focus{
 
    .buidling-code {
        display: block;
+   }
+
+   .buildings-list-container-mob {
+       display: block;
+   }
+
+   .buildings-list-container {
+       display: none;
    }
 }
 
@@ -199,7 +244,7 @@ button:focus{
     }
 
     .amenities-row {
-        display: block;
+        display: flex;
     }
 
     .amenities-text{
@@ -214,6 +259,14 @@ button:focus{
     .buidling-code {
         display: block;
         margin-left: 0px;
+    }
+
+    .buildings-list-container-mob {
+        display: block;
+    }
+
+    .buildings-list-container {
+        display: none;
     }
 
 }
@@ -243,7 +296,7 @@ button:focus{
     }
 
     .amenities-row {
-        display: block;
+        display: flex;
     }
 
     .amenities-text{
@@ -257,6 +310,14 @@ button:focus{
     .buidling-code {
         display: block;
         margin-left: 0px;
+    }
+
+    .buildings-list-container-mob {
+        display: block;
+    }
+
+    .buildings-list-container {
+        display: none;
     }
 }
 
@@ -300,6 +361,14 @@ button:focus{
         display: inline-block;
         margin-left: 10px;
     }
+
+    .buildings-list-container-mob {
+        display: none;
+    }
+
+    .buildings-list-container {
+        display: block;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -342,6 +411,14 @@ button:focus{
         display: inline-block;
         margin-left: 10px;
     }
+
+    .buildings-list-container-mob {
+        display: none;
+    }
+
+    .buildings-list-container {
+        display: block;
+    }
 }
 
 @media (min-width: 1370px) { 
@@ -382,5 +459,13 @@ button:focus{
     .buidling-code {
         display: inline-block;
         margin-left: 10px;
+    }
+
+    .buildings-list-container-mob {
+        display: none;
+    }
+
+    .buildings-list-container {
+        display: block;
     }
 }

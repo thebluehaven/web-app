@@ -48,12 +48,12 @@ export class SearchResultsComponent implements OnInit {
     if ($event['type'] === 'step1') {
       this.selectedBuilding = $event['building'];
       this.dataToPost.building.building_id = this.selectedBuilding.building_id;
+      this.dataToPost.preferences.type = this.selectedBuilding.room_selected;
       stepper.next();
     } else if ($event['type'] === 'step2'){
       this.selectedPackage = $event['package'];
       this.dataToPost.building.basic_amenities = this.selectedPackage.basic_amenities;
       this.dataToPost.building.furnishing_amenities = this.selectedPackage.furnishing_amenities;
-      this.dataToPost.preferences.type = this.selectedPackage.room_selected;
       stepper.next();
     } else if ($event['type'] === 'step3') {
       this.dataToPost.contact_details = $event['contact'];
@@ -68,7 +68,7 @@ export class SearchResultsComponent implements OnInit {
   postData() {
     console.log(this.dataToPost);
     this.appService.postLead(this.dataToPost)
-            .subscribe(res => console.log(res))
+            .subscribe(res => console.log(res));
     this.closePopup.emit();
   }
 }

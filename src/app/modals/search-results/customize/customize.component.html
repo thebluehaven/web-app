@@ -22,8 +22,10 @@
                     </div>
                     <div class="col col-lg-7 col-md-7 col-sm-7 padding-3">
                         <p style="vertical-align: text-bottom;margin: 0 5px 0 0;">Your choice: </p>
-                        <mat-radio-group aria-label="Select an option" (change)="changeRoomSelection()" [(ngModel)]="data.room_selected">
-                            <mat-radio-button class="mx-1" *ngFor="let room of data.room_type" [value]="room.room_id" >{{room.name}}
+                        <mat-radio-group aria-label="Select an option" (change)="changeRoomSelection()"
+                            [(ngModel)]="data.room_selected">
+                            <mat-radio-button class="mx-1" *ngFor="let room of data.room_type" [value]="room.room_id">
+                                {{room.name}}
                             </mat-radio-button>
                         </mat-radio-group>
                     </div>
@@ -95,4 +97,122 @@
             </div>
         </div>
     </div>
+</div>
+
+
+
+<div class="row buildings-list-container-mob mt-3">
+    <div class="col col-lg-12 col-md-12 col-sm-12 p-0">
+        <div class="row buidling-row">
+            <div class="col col-lg-3 col-md-3 col-sm-3">
+                <img [src]="data.photos_link" class="building-image" />
+            </div>
+            <div class="col col-lg-9 col-md-9 col-sm-9 p-0">
+                <div class="row">
+                    <div class="col col-lg-12 col-md-12 col-sm-12 padding-3">
+                        <b class="buidling-name">{{ data.name }}</b>
+                        <p class="buidling-code">{{data.short_name}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-lg-12 col-md-12 col-sm-12 pl-3">
+                        <p style="font-size:14px;color:gray">{{ data.location }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-lg-5 col-md-5 col-sm-5 padding-3">
+                        <b style="color:chocolate">{{ data.rooms }}</b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-lg-7 col-md-7 col-sm-7 padding-3">
+                        <!-- <p style="vertical-align: text-bottom;margin: 0 5px 0 0;">Select: </p> -->
+                        <mat-radio-group aria-label="Select an option" (change)="changeRoomSelection()"
+                            [(ngModel)]="data.room_selected">
+                            <mat-radio-button class="mx-1" *ngFor="let room of data.room_type" [value]="room.room_id">
+                                {{room.name}}
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="row p-2 amenities-row justify-content-center">
+                    <div *ngFor="let ba of data.building_amenities" class="col-1"> <img [src]="ba.image_url"
+                            class="amenities-icon" /></div>
+                </div>
+            </div>
+        </div>
+
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <p class="amenities-side-text-mob">Basic Amenities</p>
+                        <p class="optional-text-mob">(optional)</p>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-checkbox *ngFor="let ba of data.basic_amenities" class="mx-1" [(ngModel)]="ba.selected"
+                    (change)="changePrice(ba)">{{ba.name}}
+                </mat-checkbox>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <p class="amenities-side-text-mob">Furnishing Amenities</p>
+                        <p class="optional-text-mob">(optional)</p>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-checkbox *ngFor="let fa of data.furnishing_amenities" class="mx-1" [(ngModel)]="fa.selected"
+                    (change)="changePrice(ba)">{{fa.name}}
+                </mat-checkbox>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <div class="row">
+            <div class="col align-self-end mt-5 mb-5 footer-base-mob text-right">
+                <div class="row">
+                    <div class="col ">
+                        <p class="price-headings-mob">Deposit</p>
+                    </div>
+                    <div class="col">
+                        <p class="price-data-mob">{{baseDeposit}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="price-headings-mob">Base Price</p>
+                    </div>
+                    <div class="col">
+                        <p class="price-data-mob">{{basePrice}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="price-headings-mob">Amenities</p>
+                    </div>
+                    <div class="col">
+                        <p class="price-data-mob">{{totalAmenitiesPrice}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="price-headings-mob">Total (monthly)</p>
+                    </div>
+                    <div class="col">
+                        <p class="price-data-mob price-data-total-mob">{{totalPrice}}*</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="terms-conditions-mob" *ngIf="amenitiesSelectedCount > 2">*Looks too much? It's
+                            Negotiable.</p>
+                    </div>
+                    <div class="col">
+                        <button mat-raised-button class="btn confirm-btn-mob"
+                            (click)="goForward.emit({package: selectedObj, type: 'step2'})">Book Slot</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
