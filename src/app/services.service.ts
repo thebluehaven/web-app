@@ -59,4 +59,13 @@ export class ServicesService {
   postLead(data: any): Observable<any> {
     return this.http.post<any>(constants.baseUrl + 'request', data, this.httpOptions);
   }
+
+  getImagesByBuildingId(id: string): Observable<any> {
+    return this.http.get<any>(constants.baseUrl + 'buildings/' + id + '/images').pipe(
+      map(res => {
+        // tslint:disable-next-line: no-string-literal
+        return res['result'];
+      })
+    );
+  }
 }

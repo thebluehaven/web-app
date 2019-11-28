@@ -23,6 +23,8 @@ import { SearchResultsListComponent } from './modals/search-results/search-resul
 import { CustomizeComponent } from './modals/search-results/customize/customize.component';
 import { MoveinComponent } from './modals/search-results/move-in/move-in.component';
 import { ErrorComponent } from './modals/error/error.component';
+import { ThankyouComponent } from './modals/thank-you/thankyou.component';
+
 // angular material
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,8 +45,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     SearchResultsListComponent,
     CustomizeComponent,
     MoveinComponent,
-    ErrorComponent
+    ErrorComponent,
+    ThankyouComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +93,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatNativeDateModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCardModule
   ],
   exports: [
     MatSelectModule,
@@ -110,7 +115,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatNativeDateModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCardModule
   ],
   providers: [
     MatNativeDateModule,

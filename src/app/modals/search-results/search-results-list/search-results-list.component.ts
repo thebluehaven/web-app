@@ -35,11 +35,11 @@ export class SearchResultsListComponent implements OnInit {
         });
     }
 
-    openGalleryDialog(): void {
+    openGalleryDialog(buidling: any): void {
         const dialogRef = this.dialog.open(PopupModalComponent, {
             width: '1000px',
             height: '90vh',
-            data: { type: 'gallery' }
+            data: {...buidling, type: 'gallery' }
         });
         dialogRef.afterClosed().subscribe(result => {
             // console.log('The dialog was closed');

@@ -24,6 +24,12 @@
     color:white;
     border: 1px solid brown;
 }
+
+.btn-request-demo:focus {
+    outline: none;
+    border: 1px solid brown;
+}
+
 .header-logo{
     width: 203px;
     height: 23px;

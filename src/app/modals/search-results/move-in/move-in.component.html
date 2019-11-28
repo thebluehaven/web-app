@@ -69,7 +69,7 @@
                 <textarea formControlName="query" matInput placeholder="Drop your query"></textarea>
             </mat-form-field>
         </form>
-        <button mat-button (click)="goBack.emit()">Back</button>
+        <button mat-button (click)="revert();goBack.emit()">Back</button>
         <button mat-raised-button [disabled]="contactForm.invalid" class="btn done-btn" (click)="onSubmit()">Done</button>
     </div>
 </div>

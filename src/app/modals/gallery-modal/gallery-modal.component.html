@@ -1,6 +1,19 @@
-<mat-grid-list cols="4" rowHeight="100px" [gutterSize]="'10px'">
-    <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
-        [style.background]="tile.color">
-        <img src="../../../assets/images/building1.jpg" class="grid-image" />
-    </mat-grid-tile>
-</mat-grid-list>
+<div class="row align-items-center">
+    <div class="col col-lg-12 col-md-12 col-sm-12 p-0 text-center">
+        <mat-spinner class="m-auto" *ngIf="!images"></mat-spinner>
+    </div>
+</div>
+
+<div class="row justify-content-center" *ngIf="images">
+    <div closs="col col-lg-12 col-md-12 col-sm-12">
+
+        <div class="responsive" *ngFor="let image of images">
+            <div class="gallery">
+                <a target="_blank" [href]="image.image_url">
+                    <img [src]="image.image_url" [alt]="image.name" width="600" height="400">
+                </a>
+                <div class="desc">{{image.name}}</div>
+            </div>
+        </div>
+    </div>
+</div>

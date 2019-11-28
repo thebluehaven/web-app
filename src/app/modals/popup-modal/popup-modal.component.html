@@ -8,4 +8,5 @@
 <app-video *ngIf="data.type === 'video'" [data]="data"></app-video>
 <app-gallery *ngIf="data.type === 'gallery'" [data]="data"></app-gallery>
 <app-location *ngIf="data.type === 'location'" [data]="data"></app-location>
-<app-error *ngIf="data.type === 'error'"(closePopup)="onNoClick($event)" [data]="data"></app-error>
+<app-error *ngIf="data.type === 'error'" (closePopup)="onNoClick()" [data]="data"></app-error>
+<app-thankyou *ngIf="data.type === 'thankyou'" (closePopup)="onNoClick()" [data]="data"></app-thankyou>

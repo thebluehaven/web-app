@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
-export interface Tile {
-    color: string;
-    cols: number;
-    rows: number;
-    text: string;
+import { Component, Input, OnInit } from '@angular/core';
+import { ServicesService } from 'src/app/services.service';
+export interface Image {
+    name: string;
+    image_url: number;
 }
 
 @Component({
@@ -11,27 +10,19 @@ export interface Tile {
     templateUrl: './gallery-modal.component.html',
     styleUrls: ['./gallery-modal.component.css']
 })
-export class GalleryModalComponent {
+export class GalleryModalComponent implements OnInit{
     @Input()
     data: any;
 
-    constructor() { }
-    tiles: Tile[] = [
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-        { text: 'Two', cols: 1, rows: 2, color: 'orange' },
-    ];
+    constructor(private appService: ServicesService) { }
+    images: Image[];
+
+    ngOnInit() {
+        this.getImages(this.data.building_id);
+    }
+
+    getImages(id: string) {
+        this.appService.getImagesByBuildingId(id)
+            .subscribe(images => { this.images = [...images]; });
+    }
 }

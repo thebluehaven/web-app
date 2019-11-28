@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit, EventEmitter } from '@angular/core';
+import { Component, Inject, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupModalComponent } from '../popup-modal/popup-modal.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -22,6 +22,7 @@ export class SearchResultsComponent implements OnInit {
 
   selectedBuilding: any;
   selectedPackage: any;
+  @Output()
   public closePopup: EventEmitter<any> = new EventEmitter<any>();
 
   dataToPost: PostObject = {
@@ -29,7 +30,7 @@ export class SearchResultsComponent implements OnInit {
     building: {} as Building,
     contact_details: {} as Contact,
   } as PostObject;
-  constructor(private formBuilder: FormBuilder, private appService: ServicesService) { }
+  constructor(private formBuilder: FormBuilder, private appService: ServicesService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
@@ -50,7 +51,7 @@ export class SearchResultsComponent implements OnInit {
       this.dataToPost.building.building_id = this.selectedBuilding.building_id;
       this.dataToPost.preferences.type = this.selectedBuilding.room_selected;
       stepper.next();
-    } else if ($event['type'] === 'step2'){
+    } else if ($event['type'] === 'step2') {
       this.selectedPackage = $event['package'];
       this.dataToPost.building.basic_amenities = this.selectedPackage.basic_amenities;
       this.dataToPost.building.furnishing_amenities = this.selectedPackage.furnishing_amenities;
@@ -66,9 +67,19 @@ export class SearchResultsComponent implements OnInit {
   }
 
   postData() {
-    console.log(this.dataToPost);
+    // console.log(this.dataToPost);
     this.appService.postLead(this.dataToPost)
-            .subscribe(res => console.log(res));
-    this.closePopup.emit();
+      .subscribe(res => {
+        this.closePopup.emit(true);
+        this.thankyou();
+      });
+  }
+
+  thankyou() {
+    const dialogRef = this.dialog.open(PopupModalComponent, {
+      width: '700px',
+      // tslint:disable-next-line: max-line-length
+      data: { thankyouText: 'Hey <p class="name-text">' + this.dataToPost.contact_details.firstName + ' ' + this.dataToPost.contact_details.lastName + '</p>, Thank you for your enquiry. We will get back to you within 6 working hours', okButton: 'Ok', type: 'thankyou' }
+  });
   }
 }

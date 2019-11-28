@@ -28,14 +28,14 @@ export class CustomizeComponent implements OnInit {
 
     ngOnInit() {
         // tslint:disable-next-line: no-string-literal
-        this.data['furnishing_amenities'].map(x => {
+        this.data['furnishing_amenities'] = [...this.data['furnishing_amenities'].map(x => {
             return { ...x, selected: false };
-        });
+        })];
 
         // tslint:disable-next-line: no-string-literal
-        this.data['basic_amenities'].map(x => {
+        this.data['basic_amenities'] = [...this.data['basic_amenities'].map(x => {
             return { ...x, selected: false };
-        });
+        })];
 
         this.changeRoomSelection();
         if (!this.data.room_selected) { this.data.room_selected = this.data.room_type[0].room_id; }
@@ -66,12 +66,25 @@ export class CustomizeComponent implements OnInit {
             this.basePrice = this.data.room_type.filter(x => x.room_id === this.data.room_selected)[0].price;
             this.baseDeposit = this.data.room_type.filter(x => x.room_id === this.data.room_selected)[0].deposit;
             this.totalPrice = this.data.room_type.filter(x => x.room_id === this.data.room_selected)[0].price;
-        }
-        else {
+        } else {
             this.basePrice = this.data.room_type[0].price;
             this.baseDeposit = this.data.room_type[0].deposit;
             this.totalPrice = this.data.room_type[0].price;
         }
+        this.resetAmenities();
+    }
 
+    resetAmenities() {
+        // tslint:disable-next-line: no-string-literal
+        this.data['furnishing_amenities'] = [...this.data['furnishing_amenities'].map(x => {
+            return { ...x, selected: false };
+        })];
+
+        // tslint:disable-next-line: no-string-literal
+        this.data['basic_amenities'] = [...this.data['basic_amenities'].map(x => {
+            return { ...x, selected: false };
+        })];
+
+        this.totalAmenitiesPrice = 0;
     }
 }

@@ -87,6 +87,7 @@ export class MoveinComponent implements OnInit {
             reqCallback: controls.reqCallback.value,
             phone: controls.phone.value
         };
+        this.revert();
         this.done.emit({ contact: this.contactDetails, type: 'step3' })
     }
 

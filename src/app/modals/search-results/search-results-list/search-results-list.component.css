@@ -47,6 +47,12 @@ button:focus{
     color:white;
 }
 
+.no-building {
+    margin:0;
+    font-size:18px;
+    font-family:'Bree Serif', serif;
+    color:brown;
+}
 
 /* media query for mob */
 
