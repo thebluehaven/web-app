@@ -10,7 +10,7 @@ export interface Image {
     templateUrl: './gallery-modal.component.html',
     styleUrls: ['./gallery-modal.component.css']
 })
-export class GalleryModalComponent implements OnInit{
+export class GalleryModalComponent implements OnInit {
     @Input()
     data: any;
 
@@ -23,6 +23,6 @@ export class GalleryModalComponent implements OnInit{
 
     getImages(id: string) {
         this.appService.getImagesByBuildingId(id)
-            .subscribe(images => { this.images = [...images]; });
+            .subscribe(images => this.images = [...images]);
     }
 }

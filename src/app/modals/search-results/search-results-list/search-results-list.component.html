@@ -6,7 +6,7 @@
 <div class="row buildings-list-container mt-3" *ngIf="buildings">
     <div class="col col-lg-12 col-md-12 col-sm-12 p-0" [class.text-center]="buildings.length === 0">
         <mat-card class="p-5 no-building" *ngIf="buildings.length === 0">No buildings found. Please try with different options</mat-card>
-        <ul class="buildings-ul" *ngIf="buildings.length > 1">
+        <ul class="buildings-ul" *ngIf="buildings.length >= 1">
             <li *ngFor="let building of buildings" class="mt-2 p-2" style="border-bottom: 1px solid gray;">
                 <div class="row buidling-row">
                     <div class="col col-lg-3 col-md-3 col-sm-3">

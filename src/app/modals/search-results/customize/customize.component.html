@@ -162,7 +162,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-checkbox *ngFor="let fa of data.furnishing_amenities" class="mx-1" [(ngModel)]="fa.selected"
-                    (change)="changePrice(ba)">{{fa.name}}
+                    (change)="changePrice(fa)">{{fa.name}}
                 </mat-checkbox>
             </mat-expansion-panel>
         </mat-accordion>
