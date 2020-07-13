@@ -102,7 +102,7 @@ p>a {
     box-shadow: 0 4px 8px 0 brown, 0 6px 20px 0 brown;
 }
 
-.new-feature-image {
+.new-feature-image{
     width:25%;
     
 }
@@ -136,6 +136,14 @@ p>a {
     .section-content-col{
         margin-top:25%;
     }
+
+    .new-feature-image {
+        display: none
+    }
+
+    .new-feature-panel {
+        display: block
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -163,6 +171,14 @@ p>a {
 
     .section-content-col{
         margin-top:25%;
+    }
+
+    .new-feature-image {
+        display: none
+    }
+
+    .new-feature-panel {
+        display: block
     }
 }
 
@@ -192,6 +208,14 @@ p>a {
     .section-content-col{
         margin-top:25%;
     }
+    
+    .new-feature-image {
+        display: inline
+    }
+
+    .new-feature-panel {
+        display: none
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -220,6 +244,12 @@ p>a {
     .section-content-col{
         margin:0;
     }
+    .new-feature-image {
+        display: inline
+    }
+    .new-feature-panel {
+        display: none
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -244,6 +274,12 @@ p>a {
 
     .section-content-col{
         margin:0;
+    }
+    .new-feature-image {
+        display: inline
+    }
+    .new-feature-panel {
+        display: none
     }
 }
 
@@ -272,5 +308,11 @@ p>a {
 
     .section-content-col{
         margin:0;
+    }
+    .new-feature-image {
+        display: inline
+    }
+    .new-feature-panel {
+        display: none
     }
 }
