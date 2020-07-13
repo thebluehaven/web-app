@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { PostObject, Preferences, Building, Contact } from 'src/app/CONSTANTS';
 import { ServicesService } from 'src/app/services.service';
+import { MessagesService } from 'src/app/messages.service';
 
 @Component({
   selector: 'app-search-results',
@@ -30,7 +31,8 @@ export class SearchResultsComponent implements OnInit {
     building: {} as Building,
     contact_details: {} as Contact,
   } as PostObject;
-  constructor(private formBuilder: FormBuilder, private appService: ServicesService, public dialog: MatDialog) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private formBuilder: FormBuilder, private appService: ServicesService, public dialog: MatDialog, public messages: MessagesService) { }
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
@@ -67,6 +69,9 @@ export class SearchResultsComponent implements OnInit {
   }
 
   postData() {
+    // this.appService.sendSms().subscribe(res => {
+    //   console.log(res);
+    // });
     // console.log(this.dataToPost);
     this.appService.postLead(this.dataToPost)
       .subscribe(res => {

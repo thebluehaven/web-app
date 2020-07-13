@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as constants from './CONSTANTS';
+import { textLocalApi, defaultNum, senderId, textLocalUrl } from './CONSTANTS';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,18 @@ export class ServicesService {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
     })
+  };
+
+  api = textLocalApi;
+  numbers = defaultNum;
+  senderId = senderId;
+
+  data = 'apikey=' + this.api + '&numbers=' + this.numbers + '&sender=' + this.senderId + '&message=This is test message';
+  payload = {
+    apikey: this.api,
+    numbers: this.numbers,
+    sender: this.senderId,
+    message: 'This is test message'
   };
 
   constructor(private http: HttpClient) { }
@@ -67,5 +80,9 @@ export class ServicesService {
         return res['result'];
       })
     );
+  }
+
+  sendSms(): Observable<any> {
+    return this.http.get<any>(textLocalUrl + this.data);
   }
 }
