@@ -28,12 +28,15 @@ p {
 
 .building-links{
     font-size:15px;
-    color:black !important
+    background:brown !important;
+    padding: 3px 7px;
+    color: white !important;
+    border-radius: 10px;
 }
 
 .building-links:hover{
     text-decoration: none;
-    color:brown !important;
+    /* color:brown !important; */
 }
 
 button:focus{
