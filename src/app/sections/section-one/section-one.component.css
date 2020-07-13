@@ -102,6 +102,11 @@ p>a {
     box-shadow: 0 4px 8px 0 brown, 0 6px 20px 0 brown;
 }
 
+.new-feature-image {
+    width:25%;
+    
+}
+
 
 /* media query for mob */
 
