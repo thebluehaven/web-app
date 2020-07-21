@@ -20,6 +20,14 @@ export class ServicesService {
   numbers = defaultNum;
   senderId = senderId;
 
+  params = {
+    client_id: '431560667458-ftammf1cn0lkfcq4nurog14b2790drc6.apps.googleusercontent.com',
+    auth_uri: 'https://accounts.google.com/o/oauth2/auth',
+    token_uri: 'https://oauth2.googleapis.com/token',
+    scope: 'spreadsheets',
+    client_secret: 'Dv3Y8eByHLcNEjAigWZ0VYZ0'
+  };
+
   data = 'apikey=' + this.api + '&numbers=' + this.numbers + '&sender=' + this.senderId + '&message=This is test message';
   payload = {
     apikey: this.api,
@@ -84,5 +92,14 @@ export class ServicesService {
 
   sendSms(): Observable<any> {
     return this.http.get<any>(textLocalUrl + this.data);
+  }
+
+
+  getAccessToken() {
+    return this.http.post<any>('https://accounts.google.com/o/oauth2/v2/auth', this.params).pipe(
+      map(res => {
+        // tslint:disable-next-line: no-string-literal
+        return res['result'];
+      }));
   }
 }

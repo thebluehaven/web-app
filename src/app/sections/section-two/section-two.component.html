@@ -1,68 +1,105 @@
-<div class="row no-gutters justify-content-center align-items-center section-two" id="section-two">
-    <div class="col col-lg-8 col-md-8 col-sm-8 section-two-col p-0">
-        <div class="row m-2 mb-5 p-3 amenities-row">
-            <div class="col col-lg-2 col-md-2 col-sm-2 amenities-col"><img src="../../../assets/images/security.png"
-                    class="amenities-icon" /><span class="amenities-text">Security</span></div>
-            <div class="col col-lg-2 col-md-2 col-sm-2 text-center p-1 amenities-col"><img src="../../../assets/images/tap.png"
-                    class="amenities-icon" /><span class="amenities-text">24/7 Water</span></div>
-            <div class="col col-lg-2 col-md-2 col-sm-2 text-center p-1 amenities-col"><img src="../../../assets/images/cctv.png"
-                    class="amenities-icon" /><span class="amenities-text">CCTV</span></div>
-            <div class="col col-lg-2 col-md-2 col-sm-2 text-center p-1 amenities-col"><img
-                    src="../../../assets/images/pet-friendly.png" class="amenities-icon" /><span
-                    class="amenities-text">Pet-friendly</span></div>
-            <div class="col col-lg-2 col-md-2 col-sm-2 text-center p-1 amenities-col"><img src="../../../assets/images/parking.png"
-                    class="amenities-icon" /><span class="amenities-text">Parking</span></div>
-            <div class="col col-lg-2 col-md-2 col-sm-2 text-center p-1 amenities-col"><img src="../../../assets/images/bounce.png"
-                    class="amenities-icon" /><span class="amenities-text">Bounce</span></div>
-        </div>
-        <div class="row selection-row">
-            <div class="col col-lg-3 col-md-3 col-sm-3 text-center">
-                <mat-form-field>
-                    <mat-label>Accomodation type</mat-label>
-                    <mat-select [(value)]="selected.aType">
-                        <mat-option *ngFor="let type of types" [value]="type">
-                            {{type.viewValue}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col col-lg-3 col-md-3 col-sm-3 text-center">
-                <mat-form-field>
-                    <mat-label>Preferred location</mat-label>
-                    <mat-select [(value)]="selected.location">
-                        <mat-option *ngFor="let location of locations" [value]="location">
-                            {{location.viewValue}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col col-lg-3 col-md-3 col-sm-3 text-center">
-                <mat-form-field>
-                    <mat-label>Looking for?</mat-label>
-                    <mat-select [(value)]="selected.lookingForOption">
-                        <mat-option *ngFor="let option of lookingForOptions" [value]="option">
-                            {{option.viewValue}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col col-lg-3 col-md-3 col-sm-3 text-center">
-                <mat-form-field>
-                    <mat-label>Your budget</mat-label>
-                    <mat-select [(value)]="selected.budget">
-                        <mat-option *ngFor="let budget of budgets" [value]="budget">
-                            {{budget.viewValue}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="row button-row">
-            <div class="col col-lg-12 col-md-12 col-sm-12 text-center">
-                <button class="reset-button mr-4" mat-raised-button (click)="reset()">Reset</button>
-                <button class="submit-button" mat-raised-button (click)="submitRequest()">Search
-                    home</button>
-            </div>
-        </div>
+
+<div
+  class="row no-gutters justify-content-center align-items-center section-two"
+  id="section-two"
+>
+  <div class="col col-lg-8 col-md-8 col-sm-8 section-two-col p-0">
+    <div class="row m-2 mb-5 p-3 amenities-row">
+      <div class="col col-lg-2 col-md-2 col-sm-2 amenities-col">
+        <img
+          src="../../../assets/images/security.png"
+          class="amenities-icon"
+        /><span class="amenities-text">Security</span>
+      </div>
+      <div class="col col-lg-2 col-md-2 col-sm-2 text-center p-1 amenities-col">
+        <img src="../../../assets/images/tap.png" class="amenities-icon" /><span
+          class="amenities-text"
+          >24/7 Water</span
+        >
+      </div>
+      <div class="col col-lg-2 col-md-2 col-sm-2 text-center p-1 amenities-col">
+        <img
+          src="../../../assets/images/cctv.png"
+          class="amenities-icon"
+        /><span class="amenities-text">CCTV</span>
+      </div>
+      <div class="col col-lg-2 col-md-2 col-sm-2 text-center p-1 amenities-col">
+        <img
+          src="../../../assets/images/pet-friendly.png"
+          class="amenities-icon"
+        /><span class="amenities-text">Pet-friendly</span>
+      </div>
+      <div class="col col-lg-2 col-md-2 col-sm-2 text-center p-1 amenities-col">
+        <img
+          src="../../../assets/images/parking.png"
+          class="amenities-icon"
+        /><span class="amenities-text">Parking</span>
+      </div>
+      <div class="col col-lg-2 col-md-2 col-sm-2 text-center p-1 amenities-col">
+        <img
+          src="../../../assets/images/bounce.png"
+          class="amenities-icon"
+        /><span class="amenities-text">Bounce</span>
+      </div>
     </div>
+    <div class="row selection-row">
+      <div class="col col-lg-3 col-md-3 col-sm-3 text-center">
+        <mat-form-field>
+          <mat-label>Accomodation type</mat-label>
+          <mat-select [(value)]="selected.aType">
+            <mat-option *ngFor="let type of types" [value]="type">
+              {{ type.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col col-lg-3 col-md-3 col-sm-3 text-center">
+        <mat-form-field>
+          <mat-label>Preferred location</mat-label>
+          <mat-select [(value)]="selected.location">
+            <mat-option *ngFor="let location of locations" [value]="location">
+              {{ location.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col col-lg-3 col-md-3 col-sm-3 text-center">
+        <mat-form-field>
+          <mat-label>Looking for?</mat-label>
+          <mat-select [(value)]="selected.lookingForOption">
+            <mat-option
+              *ngFor="let option of lookingForOptions"
+              [value]="option"
+            >
+              {{ option.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col col-lg-3 col-md-3 col-sm-3 text-center">
+        <mat-form-field>
+          <mat-label>Your budget</mat-label>
+          <mat-select [(value)]="selected.budget">
+            <mat-option *ngFor="let budget of budgets" [value]="budget">
+              {{ budget.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row button-row">
+      <div class="col col-lg-12 col-md-12 col-sm-12 text-center">
+        <button class="reset-button mr-4" mat-raised-button (click)="reset()">
+          Reset
+        </button>
+        <button
+          class="submit-button"
+          mat-raised-button
+          (click)="submitRequest()"
+        >
+          Search home
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
