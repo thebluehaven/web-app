@@ -42,12 +42,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
+import { StorageComponent } from './storage/storage.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,8 @@ import { MatCardModule } from '@angular/material/card';
     CustomizeComponent,
     MoveinComponent,
     ErrorComponent,
-    ThankyouComponent
+    ThankyouComponent,
+    StorageComponent
   ],
   imports: [
     BrowserModule,
