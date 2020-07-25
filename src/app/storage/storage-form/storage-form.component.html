@@ -1,0 +1,157 @@
+<div class="row">
+  <div class="col text-right">
+    <mat-icon mat-dialog-close>close</mat-icon>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col col-lg-11 col-md-11 col-sm-11">
+    <div class="row mb-3">
+      <div class="col">
+        <mat-label><strong>Email*</strong></mat-label>
+        <input
+          class="input-box input-email"
+          placeholder="Email"
+          type="email"
+          [(ngModel)]="formFields.email"
+          [class.error]="submitted && !formFields.email"
+        />
+        <!-- <mat-error class="error-text">Error here</mat-error> -->
+      </div>
+    </div>
+    <div class="row my-4">
+      <div class="col">
+        <mat-label><strong>First Name*</strong></mat-label>
+        <input
+          class="input-box input-names"
+          placeholder="First Name"
+          type="text"
+          [(ngModel)]="formFields.firstName"
+          [class.error]="submitted && !formFields.firstName"
+        />
+      </div>
+      <div class="col">
+        <mat-label><strong>Last Name</strong></mat-label>
+        <input
+          class="input-box input-names"
+          placeholder="Last Name"
+          type="text"
+          [(ngModel)]="formFields.lastName"
+        />
+      </div>
+    </div>
+    <div class="row my-4">
+      <div class="col">
+        <mat-label><strong>Address*</strong></mat-label>
+        <input
+          class="input-box input-address"
+          placeholder="Address"
+          type="text"
+          [(ngModel)]="formFields.address"
+          [class.error]="submitted && !formFields.address"
+        />
+        <!-- <mat-hint>140 characters max</mat-hint> -->
+      </div>
+    </div>
+    <div class="row my-4">
+      <div class="col">
+        <mat-label><strong>Mobile*</strong></mat-label>
+        <input
+          class="input-box input-mobile"
+          placeholder="Mobile"
+          type="tel"
+          maxlength="10"
+          [(ngModel)]="formFields.mobile"
+          [class.error]="
+            (submitted && !formFields.mobile) ||
+            (submitted && formFields.mobile.length < 10)
+          "
+        />
+      </div>
+    </div>
+    <mat-label class="mb-2"
+      ><strong>What is the service you are looking for?*</strong></mat-label
+    >
+    <div class="row mb-4">
+      <div class="col d-flex">
+        <div
+          class="input-service mr-3 text-center pt-2"
+          (click)="toggleSelectedService(1)"
+          [class.input-service-selected]="selectedService === 1"
+        >
+          Pack move store intercity
+        </div>
+        <div
+          class="input-service ml-3 text-center pt-2"
+          (click)="toggleSelectedService(2)"
+          [class.input-service-selected]="selectedService === 2"
+        >
+          Pack & send to home town
+        </div>
+      </div>
+    </div>
+
+    <mat-label><strong>Items*</strong></mat-label>
+    <div class="row mb-5">
+      <div class="col grid-col">
+        <div
+          class="items d-flex pt-2"
+          *ngFor="let item of items"
+          [class.error]="submitted && !formFields.selectedItems.length"
+        >
+          <div class="item-icon-div px-2">
+            <mat-icon>delete</mat-icon>
+          </div>
+          <div class="item-count-div px-1">
+            <p class="item-count">{{ item.count }}</p>
+          </div>
+          <div
+            class="item-name-div pr-2 text-right"
+            matTooltip="Tap to increase count"
+            (click)="increaseCount(item)"
+          >
+            <p class="item-name">{{ item.name }}</p>
+          </div>
+          <div class="item-minus-div">
+            <mat-icon
+              matTooltip="Tap to decrease count"
+              (click)="decreaseCount(item)"
+              >remove</mat-icon
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-4">
+      <div class="col">
+        <mat-label><strong>From Location*</strong></mat-label>
+        <input
+          class="input-box input-location"
+          placeholder="Search location"
+          type="text"
+          [(ngModel)]="formFields.fromLocation"
+          [class.error]="submitted && !formFields.fromLocation"
+        />
+      </div>
+    </div>
+
+    <div class="row my-4">
+      <div class="col">
+        <mat-label><strong>To Location*</strong></mat-label>
+        <input
+          class="input-box input-location"
+          placeholder="Search location"
+          type="text"
+          [(ngModel)]="formFields.toLocation"
+          [class.error]="submitted && !formFields.toLocation"
+        />
+      </div>
+    </div>
+
+    <div class="row my-3">
+      <div class="col">
+        <button class="btn btn-submit-full" (click)="onSubmit()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
