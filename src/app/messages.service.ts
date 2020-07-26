@@ -23,23 +23,6 @@ export class MessagesService {
 
   constructor(private http: HttpClient) {}
 
-  // sendSms(): Observable<any> {
-  //   return this.http.get<any>(textLocalUrl + this.data);
-  // }
-
-  // getAPI(num, otp) {
-  //   return (
-  //     "apikey=" +
-  //     this.api +
-  //     "&numbers=" +
-  //     num +
-  //     "&sender=" +
-  //     this.senderId +
-  //     "&message=Hi, Welcome to BlueHaven. Your OTP is " +
-  //     otp
-  //   );
-  // }
-
   getPayload(phone, name, otp) {
     this.payloadSendText.To = phone;
     this.payloadSendText.VAR1 = name;
@@ -47,7 +30,25 @@ export class MessagesService {
     return this.payloadSendText;
   }
 
+  getCustomerIdPayload(phone, name, id) {
+    this.payloadSendText.To = phone;
+    this.payloadSendText.TemplateName = "BHThank";
+    this.payloadSendText.VAR1 = name;
+    this.payloadSendText.VAR2 = id;
+    return this.payloadSendText;
+  }
+
   sendOtp(phone, name, otp): Observable<any> {
-    return this.http.post<any>(CONSTANTS.sendTextApi, this.getPayload(phone, name, otp));
+    return this.http.post<any>(
+      CONSTANTS.sendTextApi,
+      this.getPayload(phone, name, otp)
+    );
+  }
+
+  sendCustomerId(phone, name, id) {
+    return this.http.post<any>(
+      CONSTANTS.sendTextApi,
+      this.getCustomerIdPayload(phone, name, id)
+    );
   }
 }
