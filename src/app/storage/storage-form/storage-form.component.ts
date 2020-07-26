@@ -1,9 +1,8 @@
-import { Component, Inject } from "@angular/core";
-import {
-  MatDialogRef,
-} from "@angular/material/dialog";
-import { ServicesService } from 'src/app/services.service';
-
+import { Component, Inject, ViewChild, ElementRef } from "@angular/core";
+import { MatDialogRef } from "@angular/material/dialog";
+import { ServicesService } from "src/app/services.service";
+import { MessagesService } from "src/app/messages.service";
+import * as moment from "moment";
 @Component({
   selector: "app-storage-form",
   templateUrl: "./storage-form.component.html",
@@ -11,33 +10,50 @@ import { ServicesService } from 'src/app/services.service';
 })
 export class StorageFormComponent {
   selectedService = 1;
+  otpSent = false;
+  otpDidNotMatched = false;
+  otpEntered = "";
+  otpSentToCustomer = "";
+  mobileVerified = false;
+  otherItem = "";
   items = [
-    { id: "1", name: "Bed", count: 0 },
-    { id: "2", name: "Television", count: 0 },
+    { id: "1", name: "Single Bed", count: 0 },
+    { id: "4", name: "Double Bed", count: 0 },
+    { id: "2", name: "LED/LCD/TV", count: 0 },
     { id: "3", name: "Refrigerator", count: 0 },
-    { id: "4", name: "Almirah", count: 0 },
-    { id: "5", name: "AC", count: 0 },
+    { id: "5", name: "Sofa", count: 0 },
     { id: "6", name: "Table", count: 0 },
     { id: "7", name: "Chair/s", count: 0 },
+    { id: "8", name: "Two wheeler", count: 0 },
+    { id: "9", name: "Four wheeler", count: 0 },
   ];
 
   formFields = {
     email: "",
     firstName: "",
     lastName: "",
-    serviceType: "",
+    serviceType: ["Pack", "Move", "Storage"],
     address: "",
     mobile: "",
     selectedItems: [],
     fromLocation: "",
     toLocation: "",
   };
-
+  focused = false;
   submitted = false;
-  constructor(public dialogRef: MatDialogRef<StorageFormComponent>, private service: ServicesService) {}
+
+  @ViewChild("otherItemDir", { static: false }) otherItemDir: ElementRef;
+
+  constructor(
+    public dialogRef: MatDialogRef<StorageFormComponent>,
+    private service: ServicesService,
+    private otpService: MessagesService
+  ) {}
 
   toggleSelectedService(val) {
     this.selectedService = val;
+    this.formFields.serviceType =
+      val === 1 ? ["Pack", "Move", "Storage"] : ["Move out"];
   }
 
   decreaseCount(item) {
@@ -49,6 +65,9 @@ export class StorageFormComponent {
 
   increaseCount(item) {
     const index = this.items.findIndex((x) => x.id === item.id);
+    if (this.items[index].count >= 9) {
+      return;
+    }
     this.items[index].count += 1;
     this.formFields.selectedItems = [...this.items.filter((x) => x.count)];
   }
@@ -69,14 +88,103 @@ export class StorageFormComponent {
     return true;
   }
 
+  getEmailVerified(email) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      return true;
+    }
+    return false;
+  }
+
+  isNumberKey(evt) {
+    const charCode = evt.which ? evt.which : evt.keyCode;
+    if (charCode !== 46 && charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
+
   onSubmit() {
+    this.service.createItemMondayCom(
+      this.formFields.firstName,
+      {...this.formFields, id: this.generateCustomerID()}
+    );
+    // this.onNoClick();
+  }
+
+  handleToLocationChange(event) {
+    this.formFields.toLocation = event.formatted_address;
+  }
+
+  handleFromLocationChange(event) {
+    this.formFields.fromLocation = event.formatted_address;
+  }
+
+  addOtherItem(item) {
+    if (item.length < 3) {
+      return;
+    }
+    this.items.push({ id: this.items.length + 1 + "", name: item, count: 1 });
+    this.formFields.selectedItems = [...this.items.filter((x) => x.count)];
+    this.otherItem = "";
+    this.focused = false;
+  }
+
+  sendOtpToCustomer() {
     this.submitted = true;
     if (!this.checkForm()) {
       return false;
     }
-    
-    this.service.createItemMondayCom(this.formFields.firstName, this.formFields);
-    this.onNoClick();
+    this.otpSentToCustomer = Math.floor(Math.random() * 10000) + "";
+    this.otpService
+      .sendOtp(
+        this.formFields.mobile,
+        this.formFields.firstName,
+        this.otpSentToCustomer
+      )
+      .subscribe((res) => {
+        if (res.Status === "Success") {
+          this.otpSent = true;
+          this.onSubmit();
+        }
+      });
+  }
+
+  verifyOtp() {
+    if (this.otpSentToCustomer === this.otpEntered) {
+      this.mobileVerified = true;
+    } else {
+      this.otpDidNotMatched = true;
+    }
+    this.mobileVerified = true;
+    setTimeout(() => {
+      this.onNoClick();
+    }, 2000);
+  }
+
+  resendOtp() {
+    this.otpService
+      .sendOtp(
+        this.formFields.mobile,
+        this.formFields.firstName,
+        this.otpSentToCustomer
+      )
+      .subscribe((res) => {
+        if (res.Status === "Success") {
+          this.otpSent = true;
+        }
+      });
+  }
+
+  generateOtp() {
+    return Math.floor(Math.random() * 10000);
+  }
+
+  generateCustomerID() {
+    return (
+      this.formFields.firstName.substr(0, 3).toUpperCase() +
+      Math.floor(Math.random() * 1000) +
+      moment(new Date()).format("DDMMYY")
+    );
   }
 
   onNoClick(): void {

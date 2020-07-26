@@ -27,6 +27,10 @@
   cursor: pointer;
 }
 
+.input-otp {
+  width: 30%;
+}
+
 .input-service-selected {
   background: #091d40;
   color: white;
@@ -67,6 +71,7 @@
   overflow: hidden;
   margin-bottom: 0;
   text-overflow: ellipsis;
+  font-size: 14px;
 }
 
 .item-minus-div {
@@ -82,15 +87,123 @@
   color: white;
 }
 
+.btn-verify-otp {
+  background: #45c7f2;
+  outline: none;
+  height: 41px;
+  width:15%;
+  border-radius: 0;
+  color: white;
+}
+
 .btn-submit-full:focus {
   outline: none;
   box-shadow: none;
 }
 
 .error-text {
-    font-size: 12px;
+  font-size: 12px;
+  color: orangered;
 }
 
 .error {
-    border: 1px solid orangered;
+  border: 1px solid orangered;
+}
+
+.add-more-items {
+  opacity: 0.4;
+}
+
+.item-name-input {
+  border: none;
+  outline: none;
+  width: 90%;
+}
+
+.item-name-input:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.item-name-other-div {
+  width: 55%;
+}
+
+.opaq {
+  opacity: 1;
+}
+
+.form-field-custom {
+  width: 100%;
+  height: 40px;
+}
+
+::ng-deep .mat-form-field-infix {
+  border-top: none !important;
+}
+
+::ng-deep .mat-form-field-label {
+  padding: 12px !important;
+  color: gray !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none !important;
+}
+
+.verification-icon {
+  position: absolute;
+  margin-top: -20px;
+  margin-left: -35px;
+  color: forestgreen;
+}
+
+.verification-text {
+  position: absolute;
+  margin-top: -17px;
+  margin-left: -85px;
+  padding: 3px 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.verification-text:hover {
+  background: lightgray;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.verified {
+  border-color: forestgreen !important;
+}
+
+.resend-btn {
+    font-size: 14px;
+}
+
+.resend-btn:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.otp-sent {
+    color: forestgreen;
+}
+
+.verification-close {
+    color: orangered
+}
+
+::ng-deep .no-padding .mat-form-field-wrapper {
+    padding:0
+}
+
+.thank-you-img {
+    width: 70px;
+    height: 70px;
+}
+
+.thank-you-text {
+    color: #001439;
 }

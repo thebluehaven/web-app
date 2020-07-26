@@ -52,6 +52,7 @@ import { MatCardModule } from "@angular/material/card";
 import { StorageComponent } from "./storage/storage.component";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { StorageFormComponent } from "./storage/storage-form/storage-form.component";
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,6 +102,7 @@ import { StorageFormComponent } from "./storage/storage-form/storage-form.compon
     MatExpansionModule,
     MatCardModule,
     MatTooltipModule,
+    GooglePlaceModule
   ],
   exports: [
     MatSelectModule,

@@ -4,7 +4,7 @@ import { map } from "rxjs/operators";
 
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import * as constants from "./CONSTANTS";
-import { textLocalApi, defaultNum, senderId, textLocalUrl } from "./CONSTANTS";
+// import { textLocalApi, defaultNum, senderId, textLocalUrl } from "./CONSTANTS";
 import { Apollo } from "apollo-angular";
 import { HttpLink } from "apollo-angular-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
@@ -25,33 +25,6 @@ export class ServicesService {
     // tslint:disable-next-line: max-line-length
     "eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjYxOTQ4Mjk3LCJ1aWQiOjExMTk0ODQ5LCJpYWQiOiIyMDIwLTA3LTIyVDE1OjE4OjQyLjAwMFoiLCJwZXIiOiJtZTp3cml0ZSJ9.Ggj8qsvLHwZ8d5bstIfkjOqVK2L1WzQCAo7Jt7c35U8";
   uri = "https://api.monday.com/v2/";
-  api = textLocalApi;
-  numbers = defaultNum;
-  senderId = senderId;
-
-  params = {
-    client_id:
-      "431560667458-ftammf1cn0lkfcq4nurog14b2790drc6.apps.googleusercontent.com",
-    auth_uri: "https://accounts.google.com/o/oauth2/auth",
-    token_uri: "https://oauth2.googleapis.com/token",
-    scope: "spreadsheets",
-    client_secret: "Dv3Y8eByHLcNEjAigWZ0VYZ0",
-  };
-
-  data =
-    "apikey=" +
-    this.api +
-    "&numbers=" +
-    this.numbers +
-    "&sender=" +
-    this.senderId +
-    "&message=This is test message";
-  payload = {
-    apikey: this.api,
-    numbers: this.numbers,
-    sender: this.senderId,
-    message: "This is test message",
-  };
 
   constructor(
     private http: HttpClient,
@@ -136,21 +109,6 @@ export class ServicesService {
       );
   }
 
-  sendSms(): Observable<any> {
-    return this.http.get<any>(textLocalUrl + this.data);
-  }
-
-  getAccessToken() {
-    return this.http
-      .post<any>("https://accounts.google.com/o/oauth2/v2/auth", this.params)
-      .pipe(
-        map((res) => {
-          // tslint:disable-next-line: no-string-literal
-          return res["result"];
-        })
-      );
-  }
-
   public createItemMondayCom = (itemName, columnVals) => {
     this.apollo
       .mutate({
@@ -174,17 +132,24 @@ export class ServicesService {
       .subscribe((result) => {
         // console.log(result);
       });
-  }
+  };
 
   public getParsedVals = (values) => {
     const payload = {
       phone: { phone: values.mobile, countryShortName: "IN" },
       email: values.email,
       address1: { text: values.address },
-      type_of_service: { labels: ["Pack", "Move"] },
+      long_text: { text: values.fromLocation },
+      long_text3: { text: values.toLocation },
+      text0: values.id,
+      long_text0: {
+        text: values.selectedItems
+          .map((x) => x.count + " " + x.name)
+          .join(", "),
+      },
+      type_of_service: { labels: values.serviceType },
       dropdown8: { labels: ["Website"] },
     };
-    // console.log(JSON.stringify(payload));
     return JSON.stringify(payload);
-  }
+  };
 }

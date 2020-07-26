@@ -64,7 +64,7 @@
 }
 
 .storage-second-row {
-  height: 850px;
+  height: 880px;
   background: linear-gradient(180deg, white 50%, #f1f1f1 50%);
 }
 
@@ -123,7 +123,7 @@
 
 .circle-number-content {
   color: white;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .storage-fourth-title-text {
@@ -307,8 +307,8 @@
 .fill-form-btn {
   background-color: #45c7f2;
   -webkit-animation-name: bounce;
-  animation: bounce 0.5s; 
-  animation-direction: alternate; 
+  animation: bounce 0.5s;
+  animation-direction: alternate;
   animation-iteration-count: infinite;
 }
 
@@ -324,13 +324,16 @@
 }
 
 @keyframes bounce {
-  from { 
-    -webkit-transform: translate3d(0, -20px, 0); 
-    transform: translate3d(0, -20px, 0); 
-} 
-to { 
-    -webkit-transform: translate3d(0, 0px, 0); 
-    transform: translate3d(0, 0px, 0); 
-} 
+  from {
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
+  }
+  to {
+    -webkit-transform: translate3d(0, 0px, 0);
+    transform: translate3d(0, 0px, 0);
+  }
 }
 
+.circle-number-title, .circle-number-content {
+  width: 290px;
+}
