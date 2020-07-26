@@ -13,7 +13,8 @@ export const marker =
 // export const sendTextKey = "cb5aa062-cf3a-11ea-9fa5-0200cd936042";
 // export const defaultNum = "916366936633";
 export const senderId = "BLUHVN";
-export const sendTextApi = "http://2factor.in/API/V1/cb5aa062-cf3a-11ea-9fa5-0200cd936042/ADDON_SERVICES/SEND/TSMS";
+export const sendTextApi =
+  "http://2factor.in/API/V1/cb5aa062-cf3a-11ea-9fa5-0200cd936042/ADDON_SERVICES/SEND/TSMS";
 
 export interface BuildingObject {
   furnishing_amenities: any;
@@ -70,3 +71,37 @@ export interface PostObject {
   building: Building;
   contact_details: Contact;
 }
+
+export const arrayOfItems = {
+  fri: "../../../assets/images/items/fridge.png",
+  was: "../../../assets/images/items/washing-machine.png",
+  sin: "../../../assets/images/items/single bed.png",
+  dou: "../../../assets/images/items/double bed.png",
+  cup: "../../../assets/images/items/dresser.png",
+  clo: "../../../assets/images/items/clothes.png",
+  gas: "../../../assets/images/items/gas-stove.png",
+  // mat: "../../../assets/images/items/",
+  din: "../../../assets/images/items/dining table.png",
+  sof: "../../../assets/images/items/sofa.png",
+  ove: "../../../assets/images/items/microwave.png",
+  mic: "../../../assets/images/items/microwave.png",
+  tv: "../../../assets/images/items/tv.png",
+  led: "../../../assets/images/items/tv.png",
+  lcd: "../../../assets/images/items/tv.png",
+  tab: "../../../assets/images/items/table.png",
+  tro: "../../../assets/images/items/suitcase.png",
+  sui: "../../../assets/images/items/suitcase.png",
+  lug: "../../../assets/images/items/suitcase.png",
+  lap: "../../../assets/images/items/laptop.png",
+  des: "../../../assets/images/items/desktop.png",
+  car: "../../../assets/images/items/car.png",
+  bik: "../../../assets/images/items/bike.png",
+  bic: "../../../assets/images/items/bicycle.png",
+  cyc: "../../../assets/images/items/bicycle.png",
+  // foo: "../../../assets/images/items/",
+  dre: "../../../assets/images/items/dresser.png",
+  ac: "../../../assets/images/items/air-conditioner.png",
+  toa: "../../../assets/images/items/toaster.png",
+  vac: "../../../assets/images/items/vacuum-cleaner.png",
+  // hom: "../../../assets/images/items/h",
+};

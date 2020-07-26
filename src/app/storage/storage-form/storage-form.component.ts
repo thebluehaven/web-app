@@ -3,6 +3,7 @@ import { MatDialogRef } from "@angular/material/dialog";
 import { ServicesService } from "src/app/services.service";
 import { MessagesService } from "src/app/messages.service";
 import * as moment from "moment";
+import * as CONSTANTS from "../../CONSTANTS";
 @Component({
   selector: "app-storage-form",
   templateUrl: "./storage-form.component.html",
@@ -19,13 +20,13 @@ export class StorageFormComponent {
   items = [
     { id: "1", name: "Single Bed", count: 0 },
     { id: "4", name: "Double Bed", count: 0 },
-    { id: "2", name: "LED/LCD/TV", count: 0 },
-    { id: "3", name: "Refrigerator", count: 0 },
+    { id: "2", name: "TV", count: 0 },
+    { id: "3", name: "Fridge", count: 0 },
     { id: "5", name: "Sofa", count: 0 },
     { id: "6", name: "Table", count: 0 },
-    { id: "7", name: "Chair/s", count: 0 },
-    { id: "8", name: "Two wheeler", count: 0 },
-    { id: "9", name: "Four wheeler", count: 0 },
+    { id: "7", name: "Suitcase", count: 0 },
+    { id: "8", name: "Bike", count: 0 },
+    { id: "9", name: "Car", count: 0 },
   ];
 
   formFields = {
@@ -104,10 +105,10 @@ export class StorageFormComponent {
   }
 
   onSubmit() {
-    this.service.createItemMondayCom(
-      this.formFields.firstName,
-      {...this.formFields, id: this.generateCustomerID()}
-    );
+    this.service.createItemMondayCom(this.formFields.firstName, {
+      ...this.formFields,
+      id: this.generateCustomerID(),
+    });
     // this.onNoClick();
   }
 
@@ -185,6 +186,16 @@ export class StorageFormComponent {
       Math.floor(Math.random() * 1000) +
       moment(new Date()).format("DDMMYY")
     );
+  }
+
+  getSrcImg(name) {
+    if (
+      (name.length < 2 && (name !== "TV" || name !== "AC")) ||
+      CONSTANTS.arrayOfItems[name.toLowerCase().substr(0, 3)] === undefined
+    ) {
+      return "../../../assets/images/items/other-item.png";
+    }
+    return CONSTANTS.arrayOfItems[name.toLowerCase().substr(0, 3)];
   }
 
   onNoClick(): void {

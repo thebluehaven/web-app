@@ -151,7 +151,7 @@
           [class.error]="submitted && !formFields.selectedItems.length"
         >
           <div class="item-icon-div px-2">
-            <mat-icon>delete</mat-icon>
+            <img [src]="getSrcImg(item.name)" class="item-icon-img"/>
           </div>
           <div class="item-count-div px-1">
             <p class="item-count">{{ item.count }}</p>
@@ -174,7 +174,7 @@
 
         <div class="items d-flex pt-2 add-more-items" [class.opaq]="focused">
           <div class="item-icon-div px-2">
-            <mat-icon>delete</mat-icon>
+            <img [src]="getSrcImg(otherItem)" class="item-icon-img"/>
           </div>
           <div class="item-count-div px-1">
             <p class="item-count">0</p>
