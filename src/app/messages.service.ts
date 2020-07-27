@@ -15,7 +15,7 @@ export class MessagesService {
 
   payloadSendText = {
     From: CONSTANTS.senderId,
-    TemplateName: "BlueHaven OTP",
+    TemplateName: "",
     VAR1: "",
     VAR2: "",
     To: "",
@@ -26,6 +26,7 @@ export class MessagesService {
   getPayload(phone, name, otp) {
     this.payloadSendText.To = phone;
     this.payloadSendText.VAR1 = name;
+    this.payloadSendText.TemplateName = "BlueHaven OTP";
     this.payloadSendText.VAR2 = otp;
     return this.payloadSendText;
   }

@@ -159,7 +159,8 @@ export class StorageFormComponent {
     this.mobileVerified = true;
     setTimeout(() => {
       this.onNoClick();
-    }, 2000);
+      this.sendCustomerId();
+    }, 6000);
   }
 
   resendOtp() {
@@ -168,6 +169,20 @@ export class StorageFormComponent {
         this.formFields.mobile,
         this.formFields.firstName,
         this.otpSentToCustomer
+      )
+      .subscribe((res) => {
+        if (res.Status === "Success") {
+          this.otpSent = true;
+        }
+      });
+  }
+
+  sendCustomerId() {
+    this.otpService
+      .sendCustomerId(
+        this.formFields.mobile,
+        this.formFields.firstName,
+        this.generateCustomerID()
       )
       .subscribe((res) => {
         if (res.Status === "Success") {
