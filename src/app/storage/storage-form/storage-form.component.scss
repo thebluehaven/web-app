@@ -91,7 +91,7 @@
   background: #45c7f2;
   outline: none;
   height: 41px;
-  width:15%;
+  width: 15%;
   border-radius: 0;
   color: white;
 }
@@ -179,33 +179,33 @@
 }
 
 .resend-btn {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .resend-btn:hover {
-    cursor: pointer;
-    text-decoration: underline;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .otp-sent {
-    color: forestgreen;
+  color: forestgreen;
 }
 
 .verification-close {
-    color: orangered
+  color: orangered;
 }
 
 ::ng-deep .no-padding .mat-form-field-wrapper {
-    padding:0
+  padding: 0;
 }
 
 .thank-you-img {
-    width: 70px;
-    height: 70px;
+  width: 70px;
+  height: 70px;
 }
 
 .thank-you-text {
-    color: #001439;
+  color: #001439;
 }
 
 .item-icon-img {
@@ -227,7 +227,7 @@
 }
 
 .item-minus-div-mob .material-icons:focus {
-  background: lightgray
+  background: lightgray;
 }
 
 .item-count-div-mob {
@@ -235,22 +235,46 @@
 }
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 300px) {
   .storage-ui {
     display: none;
   }
   .storage-ui-mob {
     display: block;
   }
+
+  .last-name-mob {
+    display: block;
+  }
+
+  .last-name-ui {
+    display: none;
+  }
+
+  .input-service {
+    font-size: 12.5px;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 300px) {
   .items-ui {
     display: none;
   }
   .items-ui-mob {
     display: block;
+  }
+
+  .last-name-mob {
+    display: block;
+  }
+
+  .last-name-ui {
+    display: none;
+  }
+
+  .input-service {
+    font-size: 12.5px;
   }
 }
 
@@ -262,6 +286,18 @@
   .items-ui-mob {
     display: block;
   }
+
+  .last-name-mob {
+    display: block;
+  }
+
+  .last-name-ui {
+    display: none;
+  }
+
+  .input-service {
+    font-size: 12.5px;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -272,6 +308,18 @@
   .items-ui-mob {
     display: none;
   }
+
+  .last-name-mob {
+    display: none;
+  }
+
+  .last-name-ui {
+    display: block;
+  }
+
+  .input-service {
+    font-size: 16px;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -281,5 +329,17 @@
   }
   .items-ui-mob {
     display: none;
+  }
+
+  .last-name-mob {
+    display: none;
+  }
+
+  .last-name-ui {
+    display: block;
+  }
+
+  .input-service {
+    font-size: 16px;
   }
 }

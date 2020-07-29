@@ -48,7 +48,26 @@
           >
         </mat-form-field>
       </div>
-      <div class="col">
+      <div class="col last-name-ui">
+        <mat-label><strong>Last Name</strong></mat-label>
+        <mat-form-field class="form-field-custom" floatLabel="never">
+          <input
+            class="input-box input-names"
+            matInput
+            placeholder="Last Name"
+            type="text"
+            [class.verified]="formFields.lastName.length > 2"
+            [(ngModel)]="formFields.lastName"
+          />
+          <mat-icon
+            *ngIf="formFields.lastName.length > 2"
+            matSuffix
+            class="verification-icon"
+            >check_circle</mat-icon
+          >
+        </mat-form-field>
+      </div>
+      <div class="col last-name-mob mt-4">
         <mat-label><strong>Last Name</strong></mat-label>
         <mat-form-field class="form-field-custom" floatLabel="never">
           <input
