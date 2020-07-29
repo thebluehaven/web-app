@@ -53,6 +53,7 @@ import { StorageComponent } from "./storage/storage.component";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { StorageFormComponent } from "./storage/storage-form/storage-form.component";
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { StorageMobUiComponent } from './storage/storage-mob-ui/storage-mob-ui.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +76,7 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
     ThankyouComponent,
     StorageComponent,
     StorageFormComponent,
+    StorageMobUiComponent
   ],
   imports: [
     BrowserModule,

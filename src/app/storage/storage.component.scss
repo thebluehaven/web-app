@@ -7,7 +7,7 @@
 }
 
 .storage-first-right {
-  background-image: url("../../assets/images/Storage_first_right_img.png");
+  background-image: url("./../../assets/images/Storage_first_right_img.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -78,6 +78,11 @@
 .storage-second-boxes-img {
   width: 560px;
   height: 372px;
+}
+
+.target-text {
+  color: #45c7f2;
+  display: inline;
 }
 
 .sub-points-heading {
@@ -277,6 +282,7 @@
 .link-fixed-btns {
   position: fixed;
   bottom: 50px;
+  z-index:1;
   right: 50px;
   display: grid;
 }
@@ -334,6 +340,58 @@
   }
 }
 
-.circle-number-title, .circle-number-content {
+.circle-number-title,
+.circle-number-content {
   width: 290px;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .storage-ui {
+    display: none;
+  }
+  .storage-ui-mob {
+    display: block;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .storage-ui {
+    display: none;
+  }
+  .storage-ui-mob {
+    display: block;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .storage-ui {
+    display: none;
+  }
+  .storage-ui-mob {
+    display: block;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .storage-ui {
+    display: block;
+  }
+  .storage-ui-mob {
+    display: none;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .storage-ui {
+    display: block;
+  }
+  .storage-ui-mob {
+    display: none;
+  }
 }

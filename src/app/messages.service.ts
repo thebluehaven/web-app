@@ -33,7 +33,7 @@ export class MessagesService {
 
   getCustomerIdPayload(phone, name, id) {
     this.payloadSendText.To = phone;
-    this.payloadSendText.TemplateName = "BHThank";
+    this.payloadSendText.TemplateName = "BH-OTP-ID";
     this.payloadSendText.VAR1 = name;
     this.payloadSendText.VAR2 = id;
     return this.payloadSendText;

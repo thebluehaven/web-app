@@ -142,7 +142,7 @@
     </div>
 
     <mat-label><strong>Items*</strong></mat-label>
-    <div class="row mb-5 mt-1">
+    <div class="row mb-5 mt-1 items-ui">
       <div class="col grid-col">
         <div
           class="items d-flex pt-2"
@@ -151,7 +151,7 @@
           [class.error]="submitted && !formFields.selectedItems.length"
         >
           <div class="item-icon-div px-2">
-            <img [src]="getSrcImg(item.name)" class="item-icon-img"/>
+            <img [src]="getSrcImg(item.name)" class="item-icon-img" />
           </div>
           <div class="item-count-div px-1">
             <p class="item-count">{{ item.count }}</p>
@@ -174,7 +174,7 @@
 
         <div class="items d-flex pt-2 add-more-items" [class.opaq]="focused">
           <div class="item-icon-div px-2">
-            <img [src]="getSrcImg(otherItem)" class="item-icon-img"/>
+            <img [src]="getSrcImg(otherItem)" class="item-icon-img" />
           </div>
           <div class="item-count-div px-1">
             <p class="item-count">0</p>
@@ -198,6 +198,78 @@
             <mat-icon (click)="addOtherItem(otherItem); otherItemDir.blur()"
               >add</mat-icon
             >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="items-ui-mob">
+      <div class="col px-0">
+        <div
+          class="items-mob d-flex pt-2"
+          *ngFor="let item of items"
+          [class.verified]="item.count > 0"
+          [class.error]="submitted && !formFields.selectedItems.length"
+        >
+          <div class="item-icon-div px-2 text-center">
+            <img [src]="getSrcImg(item.name)" class="item-icon-img" />
+          </div>
+          <div class="item-name-div">
+            <p class="item-name">{{ item.name }}</p>
+          </div>
+
+          <div class="item-minus-div-mob">
+            <mat-icon
+              matTooltip="Tap to increase count"
+              (click)="increaseCount(item)"
+              >add</mat-icon
+            >
+          </div>
+          <div class="item-count-div-mob">
+            <p class="item-count">{{ item.count }}</p>
+          </div>
+          <div class="item-minus-div-mob">
+            <mat-icon
+              matTooltip="Tap to decrease count"
+              (click)="decreaseCount(item)"
+              >remove</mat-icon
+            >
+          </div>
+        </div>
+
+        <div
+          class="items-mob d-flex pt-2 add-more-items"
+          [class.opaq]="focused"
+        >
+          <div class="item-icon-div px-2 text-center">
+            <img [src]="getSrcImg(otherItem)" class="item-icon-img" />
+          </div>
+          <div
+            class="item-name-div"
+            matTooltip="Add other"
+          >
+            <input
+              #otherItemDir
+              (focus)="focused = true"
+              (blur)="focused = false"
+              maxlength="9"
+              class="item-name item-name-input"
+              placeholder="Add other"
+              [(ngModel)]="otherItem"
+              (keydown.enter)="addOtherItem(otherItem); otherItemDir.blur()"
+            />
+          </div>
+
+          <div class="item-minus-div-mob">
+            <mat-icon (click)="addOtherItem(otherItem); otherItemDir.blur()"
+              >add</mat-icon
+            >
+          </div>
+          <div class="item-count-div-mob px-1">
+            <p class="item-count">0</p>
+          </div>
+
+          <div class="item-minus-div-mob">
+            <mat-icon>add</mat-icon>
           </div>
         </div>
       </div>
@@ -307,7 +379,7 @@
           (click)="resendOtp()"
         >
           <p class="error-text m-0 w-50">
-            {{otpDidNotMatched ? "Incorrect OTP":""}}
+            {{ otpDidNotMatched ? "Incorrect OTP" : "" }}
           </p>
           <p class="w-50 m-0 text-right">Didn't receive a code? Resend</p>
         </mat-hint>
@@ -323,10 +395,11 @@
   </div>
 </div>
 
-
 <div class="row justify-content-center" *ngIf="mobileVerified">
   <div class="col col-lg-11 col-md-11 col-sm-11 p-5 text-center">
-    <img src="../../../assets/images/thank-you.png" class="thank-you-img"/>
-    <h5 class="mt-4 thank-you-text">Thank you for contacting us. We shall reach you out soon.</h5>
+    <img src="assets/images/thank-you.png" class="thank-you-img" />
+    <h5 class="mt-4 thank-you-text">
+      Thank you for contacting us. We shall reach you out soon.
+    </h5>
   </div>
 </div>

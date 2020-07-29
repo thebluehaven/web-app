@@ -192,7 +192,7 @@ export class StorageFormComponent {
   }
 
   generateOtp() {
-    return Math.floor(Math.random() * 10000);
+    return 1000 + Math.floor(Math.random() * 8999);
   }
 
   generateCustomerID() {
@@ -208,7 +208,7 @@ export class StorageFormComponent {
       (name.length < 2 && (name !== "TV" || name !== "AC")) ||
       CONSTANTS.arrayOfItems[name.toLowerCase().substr(0, 3)] === undefined
     ) {
-      return "../../../assets/images/items/other-item.png";
+      return "assets/images/items/other-item.png";
     }
     return CONSTANTS.arrayOfItems[name.toLowerCase().substr(0, 3)];
   }
