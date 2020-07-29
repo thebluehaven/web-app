@@ -2,7 +2,7 @@
   <div class="col col-lg-12 col-md-12 col-sm-12 storage-first-col">
     <div class="row pb-4 pt-5 px-1">
       <div class="col d-flex">
-          <i class="material-icons menu-icon px-2">menu</i>
+        <i class="material-icons menu-icon px-2">menu</i>
         <img
           src="assets/images/logo_white.png"
           class="storage-first-left-logo-mob mt-1"
@@ -91,14 +91,18 @@
         SERVICES WE OFFER
       </div>
     </div>
-    <div class="row justify-content-center px-3">
-      <div class="col d-flex px-4 my-3">
+    <div class="row justify-content-center my-2 px-3">
+      <div class="col px-4">
         <div class="services-div d-flex">
           <div class="circle-number-mob text-center mt-1">1</div>
           <div class="mx-3 mt-2">
             <p class="circle-number-mob-title px-2">CCTV Surveillance</p>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row justify-content-center my-2 px-3">
+      <div class="col px-4">
         <div class="services-div d-flex">
           <div class="circle-number-mob text-center mt-1">2</div>
           <div class="mx-3 mt-2">
@@ -108,14 +112,19 @@
       </div>
     </div>
 
-    <div class="row justify-content-center mt-3 px-3">
-      <div class="col d-flex px-4 my-3">
+    <div class="row justify-content-center my-2 px-3">
+      <div class="col px-4">
         <div class="services-div d-flex">
           <div class="circle-number-mob text-center mt-1">3</div>
           <div class="mx-3 mt-2">
             <p class="circle-number-mob-title px-2">Packaging</p>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center my-2 px-3">
+      <div class="col px-4">
         <div class="services-div d-flex">
           <div class="circle-number-mob text-center mt-1">4</div>
           <div class="mx-3 mt-2">
@@ -125,8 +134,8 @@
       </div>
     </div>
 
-    <div class="row justify-content-center mt-3 px-3">
-      <div class="col d-flex px-4 my-3">
+    <div class="row justify-content-center my-2 px-3">
+      <div class="col px-4">
         <div class="services-div d-flex">
           <div class="circle-number-mob text-center mt-1">5</div>
           <div class="mx-3 mt-2">
@@ -135,6 +144,10 @@
             </p>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row justify-content-center my-2 px-3">
+      <div class="col px-4">
         <div class="services-div d-flex">
           <div class="circle-number-mob text-center mt-1">6</div>
           <div class="mx-3 mt-2">
@@ -281,24 +294,24 @@
 </div>
 
 <div class="link-fixed-btns">
-    <button
-      mat-fab
-      class="my-1 fill-form-btn"
-      matTooltip="Click to fill form"
+  <button
+    mat-fab
+    class="my-1 fill-form-btn"
+    matTooltip="Click to fill form"
+    matTooltipPosition="left"
+    matTooltipClass="tooltip-ui"
+    (click)="openDialog()"
+  >
+    <mat-icon>library_books</mat-icon>
+  </button>
+  <a
+    href="https://wa.me/916366936633?text=Looking%20for%20storage%20services%20"
+  >
+    <img
+      src="assets/images/wa-link-btn.png"
+      matTooltip="Click to chat"
       matTooltipPosition="left"
       matTooltipClass="tooltip-ui"
-      (click)="openDialog()"
-    >
-      <mat-icon>library_books</mat-icon>
-    </button>
-    <a
-      href="https://wa.me/916366936633?text=Looking%20for%20storage%20services%20"
-    >
-      <img
-        src="assets/images/wa-link-btn.png"
-        matTooltip="Click to chat"
-        matTooltipPosition="left"
-        matTooltipClass="tooltip-ui"
-        class="wa-link-btn"
-    /></a>
-  </div>
+      class="wa-link-btn"
+  /></a>
+</div>
