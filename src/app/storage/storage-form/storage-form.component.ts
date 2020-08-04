@@ -81,9 +81,10 @@ export class StorageFormComponent {
       !this.formFields.mobile ||
       this.formFields.mobile.length < 10 ||
       !this.formFields.fromLocation ||
-      !this.formFields.toLocation ||
       this.formFields.selectedItems.length === 0
     ) {
+      return false;
+    } else if (this.selectedService === 2 && !this.formFields.fromLocation) {
       return false;
     }
     return true;
